@@ -53,11 +53,10 @@ namespace RepairShop.Plugins.Plugins.Incident
                 return;
             }
 
-            if (!target.Contains(ComputerRepairProcessSchema.ActiveStage))
-            {
-                tracingService.Trace("Execution skipped: active stage was not present in Target.");
-                return;
-            }
+            Guid bpfRecordId = context.PrimaryEntityId != Guid.Empty
+                ? context.PrimaryEntityId
+                : target.Id;
+            tracingService.Trace("BPF record ID: {0}.", bpfRecordId);
 
             Entity postImage;
             if (context.PostEntityImages == null ||
@@ -74,24 +73,17 @@ namespace RepairShop.Plugins.Plugins.Incident
                 ComputerRepairProcessSchema.ActiveStage);
             if (activeStage == null || activeStage.Id == Guid.Empty)
             {
-                tracingService.Trace("Execution skipped: current active stage was missing or invalid.");
+                tracingService.Trace(
+                    "Execution skipped: PostImage attribute {0} was missing or invalid.",
+                    ComputerRepairProcessSchema.ActiveStage);
                 return;
             }
 
-            EntityReference relatedCase = postImage.GetAttributeValue<EntityReference>(
-                ComputerRepairProcessSchema.RelatedCase);
-            if (relatedCase == null ||
-                relatedCase.Id == Guid.Empty ||
-                !string.Equals(
-                    relatedCase.LogicalName,
-                    IncidentSchema.EntityLogicalName,
-                    StringComparison.OrdinalIgnoreCase))
-            {
-                tracingService.Trace(
-                    "Execution skipped: BPF instance had no valid related Case in {0}.",
-                    ComputerRepairProcessSchema.RelatedCase);
-                return;
-            }
+            tracingService.Trace(
+                "Active stage ID: {0}. Resolving stage name from {1}.{2}; EntityReference.Name is not used.",
+                activeStage.Id,
+                ComputerRepairProcessSchema.ProcessStageEntityLogicalName,
+                ComputerRepairProcessSchema.ProcessStageName);
 
             IOrganizationService organizationService = GetOrganizationService(
                 serviceProvider,
@@ -105,6 +97,18 @@ namespace RepairShop.Plugins.Plugins.Incident
                 ? null
                 : processStage.GetAttributeValue<string>(ComputerRepairProcessSchema.ProcessStageName);
 
+            if (string.IsNullOrWhiteSpace(stageName))
+            {
+                tracingService.Trace(
+                    "Execution skipped: Process Stage {0} did not provide {1}.",
+                    activeStage.Id,
+                    ComputerRepairProcessSchema.ProcessStageName);
+                return;
+            }
+
+            stageName = stageName.Trim();
+            tracingService.Trace("Resolved active stage name: '{0}'.", stageName);
+
             int targetRepairStatus;
             if (!RepairStatusStageMapper.TryMap(stageName, out targetRepairStatus))
             {
@@ -113,6 +117,25 @@ namespace RepairShop.Plugins.Plugins.Incident
                     stageName ?? "<missing>");
                 return;
             }
+
+            tracingService.Trace("Mapped Repair Status: {0}.", targetRepairStatus);
+
+            EntityReference relatedCase = postImage.GetAttributeValue<EntityReference>(
+                ComputerRepairProcessSchema.RelatedCase);
+            if (relatedCase == null ||
+                relatedCase.Id == Guid.Empty ||
+                !string.Equals(
+                    relatedCase.LogicalName,
+                    IncidentSchema.EntityLogicalName,
+                    StringComparison.OrdinalIgnoreCase))
+            {
+                tracingService.Trace(
+                    "Execution skipped: PostImage attribute {0} did not contain a valid incident reference.",
+                    ComputerRepairProcessSchema.RelatedCase);
+                return;
+            }
+
+            tracingService.Trace("Related Case ID: {0}.", relatedCase.Id);
 
             Entity currentCase = organizationService.Retrieve(
                 IncidentSchema.EntityLogicalName,
@@ -125,7 +148,9 @@ namespace RepairShop.Plugins.Plugins.Incident
             if (currentRepairStatus != null && currentRepairStatus.Value == targetRepairStatus)
             {
                 tracingService.Trace(
-                    "Case update skipped: Repair Status already matches the active stage.");
+                    "Case update skipped: Case {0} Repair Status already equals {1}.",
+                    relatedCase.Id,
+                    targetRepairStatus);
                 return;
             }
 
@@ -134,10 +159,11 @@ namespace RepairShop.Plugins.Plugins.Incident
             organizationService.Update(caseUpdate);
 
             tracingService.Trace(
-                "Case {0} Repair Status set to {1} for BPF stage '{2}'.",
+                "Case update executed: Case {0}, attribute {1}, value {2}, BPF stage '{3}'.",
                 relatedCase.Id,
+                IncidentSchema.RepairStatus,
                 targetRepairStatus,
-                stageName.Trim());
+                stageName);
         }
 
         private static IOrganizationService GetOrganizationService(

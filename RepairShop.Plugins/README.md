@@ -133,10 +133,12 @@ Dataverse evidence confirms `incident`, `cr1a3_repairstatus`,
 as `gsic_computerrepairprocess`. Repair Duration is a Whole Number / Duration
 column and stores whole minutes.
 
-The BPF active-stage attribute (`activestageid`), Case lookup (`bpf_incidentid`),
-and BPF stage list remain unverified. Waiting for Parts and Completed are therefore
-not assumed as BPF stage mappings even though they are confirmed Repair Status
-Choice values. This does not affect the completion plug-in registration.
+Live metadata confirms the BPF active-stage attribute (`activestageid`), Case
+lookup (`bpf_incidentid`), and five BPF stages: Received, Diagnosing, Waiting For
+Approval, Repair In Progress, and Ready For Pickup. Waiting for Parts, Completed,
+and Cancelled are not BPF stages and are intentionally not mapped. The sync plug-in
+resolves the stage through a minimal `processstage.stagename` retrieve by lookup ID;
+it never assumes `EntityReference.Name` is populated in the Post Image.
 
 ## PCF companion control
 

@@ -34,7 +34,43 @@ namespace RepairShop.Plugins.Tests
             Assert.Single(capturedUpdate.Attributes);
             Assert.Equal(
                 expectedRepairStatus,
-                capturedUpdate.GetAttributeValue<OptionSetValue>(IncidentSchema.RepairStatus).Value);
+                capturedUpdate.GetAttributeValue<OptionSetValue>("cr1a3_repairstatus").Value);
+        }
+
+        [Fact]
+        public void ActiveStageReferenceWithNullName_RetrievesProcessStageNameById()
+        {
+            BpfScenario scenario = CreateScenario("Diagnosing", RepairStatusValues.Received);
+            EntityReference activeStage = scenario.PostImage.GetAttributeValue<EntityReference>(
+                "activestageid");
+            Assert.Null(activeStage.Name);
+
+            Execute(scenario);
+
+            scenario.OrganizationService.Verify(
+                service => service.Retrieve(
+                    "processstage",
+                    scenario.StageId,
+                    It.Is<ColumnSet>(columns =>
+                        columns.Columns.Count == 1 && columns.Columns.Contains("stagename"))),
+                Times.Once);
+        }
+
+        [Fact]
+        public void PostImageActiveStage_IsUsedEvenWhenSparseTargetOmitsIt()
+        {
+            BpfScenario scenario = CreateScenario("Diagnosing", RepairStatusValues.Received);
+            scenario.Target.Attributes.Remove(ComputerRepairProcessSchema.ActiveStage);
+
+            Execute(scenario);
+
+            scenario.OrganizationService.Verify(
+                service => service.Update(It.Is<Entity>(entity =>
+                    entity.Id == scenario.CaseId &&
+                    entity.Attributes.Count == 1 &&
+                    entity.GetAttributeValue<OptionSetValue>("cr1a3_repairstatus").Value ==
+                        RepairStatusValues.Diagnosing)),
+                Times.Once);
         }
 
         [Fact]
@@ -70,7 +106,7 @@ namespace RepairShop.Plugins.Tests
         [Theory]
         [InlineData("Waiting For Parts")]
         [InlineData("Completed")]
-        public void BpfStagesNotPresentInRepositoryMetadata_AreNotAssumed(string stageName)
+        public void StagesAbsentFromLiveBpf_AreNotMapped(string stageName)
         {
             BpfScenario scenario = CreateScenario(stageName, RepairStatusValues.Received);
 
@@ -88,10 +124,29 @@ namespace RepairShop.Plugins.Tests
         }
 
         [Fact]
-        public void MissingRelatedCase_DoesNotCallDataverse()
+        public void MissingRelatedCase_DoesNotReadCaseOrUpdate()
         {
             BpfScenario scenario = CreateScenario("Received", RepairStatusValues.Diagnosing);
             scenario.PostImage.Attributes.Remove(ComputerRepairProcessSchema.RelatedCase);
+
+            Execute(scenario);
+
+            scenario.OrganizationService.Verify(
+                service => service.Retrieve(
+                    IncidentSchema.EntityLogicalName,
+                    It.IsAny<Guid>(),
+                    It.IsAny<ColumnSet>()),
+                Times.Never);
+            scenario.OrganizationService.Verify(
+                service => service.Update(It.IsAny<Entity>()),
+                Times.Never);
+        }
+
+        [Fact]
+        public void MissingActiveStageInPostImage_DoesNotCallDataverse()
+        {
+            BpfScenario scenario = CreateScenario("Diagnosing", RepairStatusValues.Received);
+            scenario.PostImage.Attributes.Remove(ComputerRepairProcessSchema.ActiveStage);
 
             Execute(scenario);
 
@@ -175,7 +230,9 @@ namespace RepairShop.Plugins.Tests
             {
                 BpfId = bpfId,
                 CaseId = caseId,
+                StageId = stageId,
                 Context = context,
+                Target = target,
                 PostImage = postImage,
                 OrganizationService = organizationService
             };
@@ -202,7 +259,11 @@ namespace RepairShop.Plugins.Tests
 
             internal Guid CaseId { get; set; }
 
+            internal Guid StageId { get; set; }
+
             internal Mock<IPluginExecutionContext> Context { get; set; }
+
+            internal Entity Target { get; set; }
 
             internal Entity PostImage { get; set; }
 

@@ -31,15 +31,17 @@ and maps the five established stage names to `incident.cr1a3_repairstatus`. It r
 the Case Repair Status and sends a sparse Case update only when the value differs.
 Unknown/missing stages and missing/invalid Case references are traced and skipped.
 
-The BPF instance table `gsic_computerrepairprocess` is confirmed from the live
-Dataverse environment. The current code uses `activestageid` for its active-stage
-attribute and `bpf_incidentid` for its Case lookup. The unpacked solution has empty
-`Entities` and `Workflows` nodes, so those two attributes and the BPF stage list
-are not independently verified. Confirm them in live BPF metadata before registering.
-Waiting for Parts and Completed are not mapped until actual BPF stages with those
-names are confirmed. If metadata differs, update `ComputerRepairProcessSchema.cs`
-and `RepairStatusStageMapper.cs`, rebuild, and use the confirmed BPF table logical
-name as the Primary table. Do not register this step on `incident`.
+Live Dataverse metadata confirms the BPF table `gsic_computerrepairprocess`, active
+stage lookup `activestageid`, and Case lookup `bpf_incidentid`. The live BPF stages
+are exactly Received, Diagnosing, Waiting For Approval, Repair In Progress, and
+Ready For Pickup. Waiting for Parts, Completed, and Cancelled are intentionally
+not mapped because they are not BPF stages. Do not register this step on `incident`.
+
+The plug-in does not use `activestageid`'s `EntityReference.Name`, because Dataverse
+does not guarantee that lookup display names are populated in entity images. It
+retrieves only `processstage.stagename` using the active stage ID, then retrieves
+only `incident.cr1a3_repairstatus` to avoid an unnecessary Case update when the
+status already matches.
 
 ## CompleteRepairOnStatusChangePlugin
 
