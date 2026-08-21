@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control
+    namespace="RepairShop"
+    constructor="RepairStatusControl"
+    version="1.1.0"
+    display-name-key="RepairStatusControl_DisplayName"
+    description-key="RepairStatusControl_Description"
+    control-type="standard">
+    <external-service-usage enabled="false" />
+    <property
+      name="repairStatus"
+      display-name-key="RepairStatus_DisplayName"
+      description-key="RepairStatus_Description"
+      of-type="OptionSet"
+      usage="bound"
+      required="true" />
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/RepairStatusControl.css" order="1" />
+      <resx path="strings/RepairStatusControl.1033.resx" version="1.0.0" />
+    </resources>
+  </control>
+</manifest>

@@ -1,0 +1,135 @@
+.repair-status-control {
+    box-sizing: border-box;
+    color: #242424;
+    font-family: "Segoe UI", Arial, sans-serif;
+    inline-size: 100%;
+    min-inline-size: 0;
+    padding: 8px 4px 10px;
+}
+
+.repair-status-control__status {
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 10px;
+}
+
+.repair-status-control__status--fallback {
+    border-inline-start: 3px solid #8a8886;
+    color: #605e5c;
+    padding-inline-start: 8px;
+}
+
+.repair-status-control__status--cancelled {
+    border-inline-start: 3px solid #a4262c;
+    color: #a4262c;
+    padding-inline-start: 8px;
+}
+
+.repair-status-control__progress {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(88px, 1fr));
+    list-style: none;
+    margin: 0;
+    min-inline-size: 616px;
+    overflow: visible;
+    padding: 0;
+}
+
+.repair-status-control {
+    overflow-x: auto;
+}
+
+.repair-status-control__stage {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-inline-size: 0;
+    padding: 0 4px;
+    position: relative;
+    text-align: center;
+}
+
+.repair-status-control__stage::before {
+    background: #d1d1d1;
+    content: "";
+    block-size: 2px;
+    inline-size: 100%;
+    inset-block-start: 13px;
+    inset-inline-end: 50%;
+    position: absolute;
+    z-index: 0;
+}
+
+.repair-status-control__stage:first-child::before {
+    display: none;
+}
+
+.repair-status-control__stage--completed::before,
+.repair-status-control__stage--current::before {
+    background: #107c10;
+}
+
+.repair-status-control__marker {
+    align-items: center;
+    background: #f3f2f1;
+    border: 2px solid #8a8886;
+    border-radius: 50%;
+    box-sizing: border-box;
+    color: #605e5c;
+    display: flex;
+    font-size: 12px;
+    font-weight: 700;
+    block-size: 28px;
+    inline-size: 28px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.repair-status-control__stage--completed .repair-status-control__marker {
+    background: #107c10;
+    border-color: #107c10;
+    color: #fff;
+}
+
+.repair-status-control__stage--current .repair-status-control__marker {
+    background: #fff;
+    border-color: #005a9e;
+    box-shadow: 0 0 0 3px #deecf9;
+    color: #005a9e;
+}
+
+.repair-status-control__label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-block-start: 7px;
+    overflow-wrap: anywhere;
+}
+
+.repair-status-control__stage--future .repair-status-control__label {
+    color: #605e5c;
+    font-weight: 400;
+}
+
+.repair-status-control__state {
+    color: #605e5c;
+    font-size: 11px;
+    line-height: 1.25;
+    margin-block-start: 2px;
+}
+
+.repair-status-control__stage--current .repair-status-control__state {
+    color: #005a9e;
+    font-weight: 600;
+}
+
+@media (forced-colors: active) {
+    .repair-status-control__marker,
+    .repair-status-control__stage--completed .repair-status-control__marker,
+    .repair-status-control__stage--current .repair-status-control__marker {
+        background: Canvas;
+        border-color: CanvasText;
+        color: CanvasText;
+    }
+}

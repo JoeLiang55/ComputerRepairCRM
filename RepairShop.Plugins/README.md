@@ -1,128 +1,170 @@
 # RepairShop Dataverse plug-ins
 
-Production-oriented server-side plug-ins for the Computer Service Repair CRM
-model-driven app.
+A production-style Microsoft Dataverse plug-in solution for a computer repair
+model-driven app. It demonstrates synchronous pipeline validation, sparse entity
+updates, entity images, tracing, defensive error handling, and isolated business
+logic with unit tests.
 
-## Before building
-
-Confirm the custom Case column logical names in
-`RepairShop.Plugins/Model/IncidentSchema.cs`. The sample uses the publisher
-prefix `crs_`:
-
-| Display name | Logical name | Recommended Dataverse type |
-| --- | --- | --- |
-| Repair Status | `crs_repairstatus` | Choice |
-| Completion Date | `crs_completiondate` | Date and Time, User Local |
-| Estimated Cost | `crs_estimatedcost` | Currency |
-| Final Cost | `crs_finalcost` | Currency |
-| Date Received | `crs_datereceived` | Date and Time, User Local; Business Required |
-| Repair Duration | `crs_repairduration` | Whole Number, Duration format |
-
-The completed Choice integer is environment/solution metadata, not its label.
-Look up that integer in the solution and place it in the step's unsecure
-configuration. Do not hard-code a guessed option value.
-
-## Folder structure
+## Architecture
 
 ```text
 RepairShop.Plugins/
-├── Configuration/
-│   └── PluginConfiguration.cs
-├── Model/
-│   └── IncidentSchema.cs
-├── Plugins/
-│   └── Incident/
-│       └── CompleteRepairOnStatusChangePlugin.cs
-├── RepairShop.Plugins.csproj
-└── RepairShop.Plugins.snk
+  RepairShop.Plugins.slnx
+  PLUGIN_REGISTRATION.md
+  RepairShop.Plugins/
+    Model/                  Dataverse logical names and Choice values
+    Plugins/Incident/       the two IPlugin entry points
+    Services/               testable completion and stage-mapping logic
+    PluginBase.cs           shared context, tracing, and exception boundary
+    RepairShop.Plugins.csproj
+  RepairShop.Plugins.Tests/ focused xUnit tests with small SDK mocks
 ```
 
-The plug-in class is a thin event handler, registration configuration is parsed
-separately, and all Dataverse logical names are centralized. For a larger
-solution, replace `IncidentSchema` with generated early-bound table classes or
-generated field constants, and keep each plug-in focused on one business event.
+The existing `RepairShop.Plugins` naming and directory layout were retained to
+avoid breaking the assembly identity or current deployment references. Folders
+have a concrete responsibility; there are no empty architecture placeholders.
 
-## Plug-in Registration Tool settings
+`PluginBase` contains only repeated Dataverse plumbing. It resolves and validates
+`IPluginExecutionContext` and `ITracingService`, writes correlation-aware traces,
+and converts unexpected exceptions to stable `InvalidPluginExecutionException`
+messages. It holds no per-execution state because Dataverse can reuse a plug-in
+instance concurrently.
 
-Register `RepairShop.Plugins.dll`, then register one step for
-`RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin`:
+## Plug-ins
 
-| Setting | Value |
-| --- | --- |
-| Message | `Update` |
-| Primary Entity | `incident` (Case) |
-| Filtering Attributes | `crs_repairstatus` only |
-| Event Pipeline Stage | `PreOperation` |
-| Execution Mode | `Synchronous` |
-| Execution Order | `20` (adjust deliberately if other Case steps exist) |
-| Run in User's Context | Calling User |
-| Deployment | Server |
-| Isolation Mode | Sandbox |
-| Assembly location | Database |
-| Unsecure Configuration | `completedStatusValue=100000002` (replace with the real integer) |
-| Secure Configuration | Empty; this setting is not a secret |
+`SyncRepairStatusFromBpfStagePlugin` runs after a BPF instance update. Its narrow
+Post Image supplies the current `activestageid` and related Case, so the plug-in
+does not retrieve the BPF row. It retrieves the Process Stage name and the Case's
+current Repair Status, then sends a sparse Case update only when required. Known
+stage matching is trimmed and case-insensitive; unknown or incomplete data is
+traced and skipped safely.
 
-Register this image on the step. Select only the listed columns; never use the
-default all-columns image.
+`CompleteRepairOnStatusChangePlugin` runs before a Case update. On a genuine
+transition to the confirmed Completed Choice, it validates Date Received,
+stamps Completion Date with `DateTime.UtcNow`, calculates elapsed whole minutes,
+and copies Estimated Cost only when Final Cost is empty. It changes the incoming
+`Target`, avoiding an additional `IOrganizationService.Update` call.
 
-| Image type | Name/alias | Columns |
-| --- | --- | --- |
-| Pre Image | `PreImage` | `crs_repairstatus`, `crs_completiondate`, `crs_estimatedcost`, `crs_finalcost`, `crs_datereceived`, `crs_repairduration` |
+## Dataverse SDK and framework
 
-PreOperation is intentional: the plug-in adds only the necessary completion
-columns to the incoming sparse Target. Dataverse persists them in the original
-transaction, so there is no second `Update` call and therefore no plug-in
-recursion. The code logs `Depth` for diagnostics but does not make business logic
-depend on it, because Depth can legitimately be greater than one in other call
-paths.
+The plug-in targets .NET Framework 4.6.2, a supported Dataverse sandbox target,
+and references `Microsoft.CrmSdk.CoreAssemblies` 9.0.2.60. Although its package
+name is historical, Microsoft currently documents it as the minimal supported
+SDK package for .NET Framework plug-ins. `Microsoft.PowerPlatform.Dataverse.Client`
+is not needed because this assembly runs inside Dataverse rather than connecting
+as an external client. Tests add only xUnit and Moq; no full Dataverse emulator is
+needed for these small, deterministic rules.
 
-A Post Image is not appropriate for this same-row mutation because it is not
-available until PostOperation and using it would require a second Case update.
-Use a narrowly configured Post Image in a separate PostOperation step when a
-downstream action truly needs the final committed row values—for example, an
-asynchronous integration event that does not modify the same Case.
+## Build and test
 
-## Behavior and error handling
+Install a current .NET SDK, then run from this directory:
 
-The handler exits without a service call unless Repair Status truly transitions
-from a different value to Completed. On transition it:
+```powershell
+dotnet restore RepairShop.Plugins.slnx
+dotnet build RepairShop.Plugins.slnx --configuration Release --no-restore
+dotnet test RepairShop.Plugins.slnx --configuration Release --no-build
+```
 
-1. stamps Completion Date with `DateTime.UtcNow`;
-2. copies Estimated Cost only when Final Cost is null;
-3. stores elapsed whole minutes in Repair Duration;
-4. adds only changed completion columns to the original sparse Target.
+The signed deployable output is
+`RepairShop.Plugins/bin/Release/net462/RepairShop.Plugins.dll`. Do not upload SDK
+DLLs beside it. Treat the checked-in signing key as a development/portfolio key;
+protect a production key in the ALM system and keep it stable between upgrades.
 
-Missing Date Received, a future Date Received, invalid step configuration, and
-missing images raise a user-readable `InvalidPluginExecutionException`, causing
-the synchronous transaction to roll back. Unexpected exception details are sent
-to `ITracingService`; the user receives a stable message containing the
-correlation ID. Enable plug-in trace logging in the environment while testing and
-use exceptions-only logging (or the organization's approved observability policy)
-in production.
+## How Dataverse plug-ins execute
 
-## Build and deploy
+Dataverse invokes the registered class through `IPlugin.Execute`. The service
+provider exposes `IPluginExecutionContext` (message, stage, table, depth, target,
+images and IDs), `ITracingService` for sandbox diagnostics, and—when data access
+is needed—`IOrganizationServiceFactory`/`IOrganizationService`. Synchronous steps
+participate in the request transaction: throwing
+`InvalidPluginExecutionException` cancels the operation and shows its safe
+message to the caller.
 
-Build Release and upload only `RepairShop.Plugins.dll` from
-`bin/Release/net462`. The SDK assemblies are supplied by Dataverse and should not
-be registered with the plug-in assembly. Keep the assembly and step in the same
-unmanaged solution in development, then deploy through managed solutions in
-higher environments. Update the existing assembly/step during ALM deployments;
-do not create duplicate steps.
+Filtering attributes keep an Update step from being invoked unless a relevant
+column was submitted. They do not prove the value changed, so these plug-ins also
+compare the Target/Image/current value before applying work.
 
-Treat the included signing key as a development/portfolio key. A production ALM
-pipeline should protect its signing key and keep the same key when updating the
-assembly so the assembly identity remains stable.
+### Pipeline choices
 
-## Minimum verification scenarios
+- **PreValidation** runs before the main transaction and is useful for early
+  rejection or security checks. Neither plug-in uses it because completion values
+  must join the Case update and BPF synchronization needs the final stage value.
+- **PreOperation** runs in the transaction before persistence. Completion uses it
+  because changing the same record's `Target` is persisted with the original
+  request, avoiding a second update and a recursive pipeline invocation.
+- **PostOperation** runs after the core operation. BPF synchronization uses it so
+  the active stage has been accepted and the Post Image represents the current
+  BPF instance before updating the related Case.
 
-Before promoting the solution, test these paths in a non-production environment:
+Entity images are transaction snapshots configured on a step. They are cheaper
+and more consistent than retrieving the same row. The completion Pre Image
+provides old/effective Case values; the BPF Post Image provides the current stage
+and Case lookup. Images intentionally include only required attributes.
 
-| Scenario | Expected result |
-| --- | --- |
-| A non-repair Case column changes | Step is not invoked |
-| Repair Status changes to a non-Completed choice | Trace-only early return |
-| Completed is submitted when already Completed | Trace-only early return |
-| Transition to Completed with Final Cost populated | Date and duration set; Final Cost preserved |
-| Transition to Completed with only Estimated Cost | Estimated Cost copied to Final Cost |
-| Transition with no Date Received | Friendly error; original status update rolls back |
-| Transition with Date Received in the future | Friendly error; original status update rolls back |
+Both steps are synchronous because users need immediate Case consistency and
+immediate validation feedback. An asynchronous PostOperation step would suit
+non-blocking notifications or integrations where eventual consistency is
+acceptable, but it could not safely reject the initiating completion update.
+
+## Recursion and unnecessary updates
+
+The completion step modifies `Target` in PreOperation and never calls Update.
+The BPF step updates a different table (`incident`) and compares the existing
+Repair Status first. Its mapping does not include Completed, so it cannot trigger
+completion behavior accidentally. Both classes trace `Depth` for diagnostics but
+do not reject valid calls based solely on depth; correct message/table/stage checks,
+filtering attributes, transition checks, and sparse updates prevent recursion.
+
+## Registration and metadata
+
+See [PLUGIN_REGISTRATION.md](PLUGIN_REGISTRATION.md) for exact step and image
+settings. Register the assembly and both steps in an unmanaged development
+solution, test them in a non-production environment, and deploy managed solutions
+to higher environments. Update existing assembly/step components rather than
+creating duplicates.
+
+The repository now has an unpacked solution project, but its `Entities`,
+`Workflows`, option sets, relationships, and root components are empty. It proves
+the publisher prefix `cr1a3`, but not table or attribute logical names. Live
+Dataverse evidence confirms `incident`, `cr1a3_repairstatus`,
+`cr1a3_datereceived`, `cr1a3_estimatedcost`, `cr1a3_finalcost`, and Choice values
+`702670000` through `702670007`. Live evidence also confirms Completion Date as
+`gsic_completiondate`, Repair Duration as `gsic_repairduration`, and the BPF table
+as `gsic_computerrepairprocess`. Repair Duration is a Whole Number / Duration
+column and stores whole minutes.
+
+The BPF active-stage attribute (`activestageid`), Case lookup (`bpf_incidentid`),
+and BPF stage list remain unverified. Waiting for Parts and Completed are therefore
+not assumed as BPF stage mappings even though they are confirmed Repair Status
+Choice values. This does not affect the completion plug-in registration.
+
+## PCF companion control
+
+The repository also contains a read-only TypeScript repair-progress field control
+under `../pcf/RepairStatusControl`. See its
+[PCF README](../pcf/RepairStatusControl/README.md) for build, packaging, Case-form
+binding, accessibility, and interview guidance. The PCF visualizes the status;
+the C# plug-ins remain responsible for server-side synchronization and validation.
+
+## Interview Talking Points
+
+- `IPlugin` is the small Dataverse entry-point contract; production code quickly
+  delegates from it to testable business logic.
+- The execution pipeline determines transaction timing. PreOperation is ideal
+  for changing the same row; PostOperation is appropriate here for reacting to
+  the accepted BPF stage.
+- `IPluginExecutionContext` supplies the message, table, stage, sparse Target,
+  entity images, user, depth, and correlation identifiers.
+- `IOrganizationService` performs Dataverse operations. This project minimizes
+  calls and sends only the Case ID plus changed Repair Status.
+- `ITracingService` is the supported way to write diagnostic detail from a
+  sandboxed plug-in; correlation IDs connect user-facing errors to traces.
+- Pre/Post Images provide selected before/after values without redundant reads.
+- Filtering attributes reduce invocations, while value comparisons prevent work
+  when a submitted value did not actually change.
+- Recursion avoidance is designed through PreOperation Target mutation, table
+  boundaries, comparisons, and sparse updates—not a blanket `Depth > 1` return.
+- Synchronous steps provide immediate consistency and validation; asynchronous
+  steps reduce user latency for work that can be eventually consistent.
+- Changing Target in PreOperation is preferable to issuing Update on the same
+  record because it stays in the original transaction and avoids another pipeline.

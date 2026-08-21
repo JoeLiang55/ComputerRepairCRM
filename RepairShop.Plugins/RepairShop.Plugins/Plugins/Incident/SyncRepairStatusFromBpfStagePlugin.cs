@@ -1,118 +1,29 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Query;
 using RepairShop.Plugins.Model;
+using RepairShop.Plugins.Services;
 
 namespace RepairShop.Plugins.Plugins.Incident
 {
     /// <summary>
-    /// Synchronizes Case Repair Status when the active Computer Repair Process stage changes.
-    ///
-    /// Register on Update of gsic_computerrepairprocess, PostOperation, synchronous,
-    /// filtered by activestageid.
+    /// Synchronizes Case Repair Status after the active Computer Repair Process stage changes.
+    /// Register on Update of the BPF instance table, PostOperation, synchronous, filtered by
+    /// activestageid, with the Post Image documented in PLUGIN_REGISTRATION.md.
     /// </summary>
-    public sealed class SyncRepairStatusFromBpfStagePlugin : IPlugin
+    public sealed class SyncRepairStatusFromBpfStagePlugin : PluginBase
     {
+        public const string PostImageAlias = "PostImage";
+
         private const int PostOperationStage = 40;
         private const string UpdateMessage = "Update";
 
-        private static readonly IDictionary<string, int> RepairStatusByStageName =
-            new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
-            {
-                { "Received", 702670000 },
-                { "Diagnosing", 702670001 },
-                { "Waiting For Approval", 702670002 },
-                { "Repair In Progress", 702670003 },
-                { "Ready For Pickup", 702670005 }
-            };
+        protected override string UnexpectedErrorMessage =>
+            "Repair Status could not be synchronized from the active repair stage.";
 
-        public void Execute(IServiceProvider serviceProvider)
-        {
-            if (serviceProvider == null)
-            {
-                throw new ArgumentNullException(nameof(serviceProvider));
-            }
-
-            var tracingService =
-                (ITracingService)serviceProvider.GetService(typeof(ITracingService));
-            var context =
-                (IPluginExecutionContext)serviceProvider.GetService(typeof(IPluginExecutionContext));
-
-            if (tracingService == null)
-            {
-                throw new InvalidPluginExecutionException(
-                    "The Dataverse tracing service is unavailable.");
-            }
-
-            if (context == null)
-            {
-                tracingService.Trace("Execution stopped: plug-in context is unavailable.");
-                throw new InvalidPluginExecutionException(
-                    "The Dataverse plug-in execution context is unavailable.");
-            }
-
-            tracingService.Trace(
-                "{0}: Start. CorrelationId={1}, OperationId={2}, Depth={3}.",
-                nameof(SyncRepairStatusFromBpfStagePlugin),
-                context.CorrelationId,
-                context.OperationId,
-                context.Depth);
-
-            try
-            {
-                var serviceFactory =
-                    (IOrganizationServiceFactory)serviceProvider.GetService(
-                        typeof(IOrganizationServiceFactory));
-
-                if (serviceFactory == null)
-                {
-                    throw new InvalidPluginExecutionException(
-                        "The Dataverse organization service factory is unavailable.");
-                }
-
-                IOrganizationService organizationService =
-                    serviceFactory.CreateOrganizationService(context.UserId);
-
-                if (organizationService == null)
-                {
-                    throw new InvalidPluginExecutionException(
-                        "The Dataverse organization service is unavailable.");
-                }
-
-                ExecuteCore(context, organizationService, tracingService);
-
-                tracingService.Trace(
-                    "{0}: Completed successfully.",
-                    nameof(SyncRepairStatusFromBpfStagePlugin));
-            }
-            catch (InvalidPluginExecutionException ex)
-            {
-                tracingService.Trace(
-                    "{0}: Execution error: {1}",
-                    nameof(SyncRepairStatusFromBpfStagePlugin),
-                    ex.ToString());
-                throw;
-            }
-            catch (Exception ex)
-            {
-                tracingService.Trace(
-                    "{0}: Unexpected error: {1}",
-                    nameof(SyncRepairStatusFromBpfStagePlugin),
-                    ex.ToString());
-
-                throw new InvalidPluginExecutionException(
-                    string.Format(
-                        "Repair Status could not be synchronized from the active repair stage. " +
-                        "Contact an administrator and provide correlation ID {0}.",
-                        context.CorrelationId),
-                    ex);
-            }
-        }
-
-        private static void ExecuteCore(
+        protected override void ExecutePlugin(
+            IServiceProvider serviceProvider,
             IPluginExecutionContext context,
-            IOrganizationService organizationService,
             ITracingService tracingService)
         {
             if (!string.Equals(context.MessageName, UpdateMessage, StringComparison.OrdinalIgnoreCase) ||
@@ -132,71 +43,48 @@ namespace RepairShop.Plugins.Plugins.Incident
             }
 
             Entity target;
-            if (!TryGetTarget(context, out target))
+            if (!TryGetTarget(context, out target) ||
+                !string.Equals(
+                    target.LogicalName,
+                    ComputerRepairProcessSchema.EntityLogicalName,
+                    StringComparison.OrdinalIgnoreCase))
             {
-                tracingService.Trace(
-                    "Execution skipped: InputParameters did not contain an Entity Target.");
+                tracingService.Trace("Execution skipped: Target was missing or invalid.");
                 return;
             }
 
             if (!target.Contains(ComputerRepairProcessSchema.ActiveStage))
             {
-                tracingService.Trace(
-                    "Execution skipped: Target did not contain {0}.",
-                    ComputerRepairProcessSchema.ActiveStage);
+                tracingService.Trace("Execution skipped: active stage was not present in Target.");
                 return;
             }
 
-            EntityReference activeStage =
-                target.GetAttributeValue<EntityReference>(ComputerRepairProcessSchema.ActiveStage);
+            Entity postImage;
+            if (context.PostEntityImages == null ||
+                !context.PostEntityImages.TryGetValue(PostImageAlias, out postImage) ||
+                postImage == null)
+            {
+                tracingService.Trace(
+                    "Execution skipped: required Post Image '{0}' was missing.",
+                    PostImageAlias);
+                return;
+            }
 
+            EntityReference activeStage = postImage.GetAttributeValue<EntityReference>(
+                ComputerRepairProcessSchema.ActiveStage);
             if (activeStage == null || activeStage.Id == Guid.Empty)
             {
-                tracingService.Trace("Execution skipped: active stage was null or invalid.");
+                tracingService.Trace("Execution skipped: current active stage was missing or invalid.");
                 return;
             }
 
-            tracingService.Trace("Active stage ID: {0}.", activeStage.Id);
-
-            Entity processStage = organizationService.Retrieve(
-                ComputerRepairProcessSchema.ProcessStageEntityLogicalName,
-                activeStage.Id,
-                new ColumnSet(ComputerRepairProcessSchema.ProcessStageName));
-
-            string stageName = processStage.GetAttributeValue<string>(
-                ComputerRepairProcessSchema.ProcessStageName);
-
-            if (string.IsNullOrWhiteSpace(stageName))
-            {
-                tracingService.Trace("Execution skipped: process stage name was null or empty.");
-                return;
-            }
-
-            stageName = stageName.Trim();
-            tracingService.Trace("Stage name: {0}.", stageName);
-
-            Guid bpfInstanceId = context.PrimaryEntityId;
-            if (bpfInstanceId == Guid.Empty)
-            {
-                tracingService.Trace("Execution skipped: BPF instance ID was empty.");
-                return;
-            }
-
-            tracingService.Trace("BPF instance ID: {0}.", bpfInstanceId);
-
-            Entity bpfInstance = organizationService.Retrieve(
-                ComputerRepairProcessSchema.EntityLogicalName,
-                bpfInstanceId,
-                new ColumnSet(ComputerRepairProcessSchema.RelatedCase));
-
-            EntityReference relatedCase = bpfInstance.GetAttributeValue<EntityReference>(
+            EntityReference relatedCase = postImage.GetAttributeValue<EntityReference>(
                 ComputerRepairProcessSchema.RelatedCase);
-
             if (relatedCase == null ||
                 relatedCase.Id == Guid.Empty ||
                 !string.Equals(
                     relatedCase.LogicalName,
-                    ComputerRepairProcessSchema.CaseEntityLogicalName,
+                    IncidentSchema.EntityLogicalName,
                     StringComparison.OrdinalIgnoreCase))
             {
                 tracingService.Trace(
@@ -205,30 +93,34 @@ namespace RepairShop.Plugins.Plugins.Incident
                 return;
             }
 
-            tracingService.Trace("Related Case ID: {0}.", relatedCase.Id);
+            IOrganizationService organizationService = GetOrganizationService(
+                serviceProvider,
+                context.UserId);
+
+            Entity processStage = organizationService.Retrieve(
+                ComputerRepairProcessSchema.ProcessStageEntityLogicalName,
+                activeStage.Id,
+                new ColumnSet(ComputerRepairProcessSchema.ProcessStageName));
+            string stageName = processStage == null
+                ? null
+                : processStage.GetAttributeValue<string>(ComputerRepairProcessSchema.ProcessStageName);
 
             int targetRepairStatus;
-            if (!RepairStatusByStageName.TryGetValue(stageName, out targetRepairStatus))
+            if (!RepairStatusStageMapper.TryMap(stageName, out targetRepairStatus))
             {
                 tracingService.Trace(
                     "Execution skipped: stage '{0}' has no Repair Status mapping.",
-                    stageName);
+                    stageName ?? "<missing>");
                 return;
             }
 
-            tracingService.Trace("Target Repair Status: {0}.", targetRepairStatus);
-
             Entity currentCase = organizationService.Retrieve(
-                ComputerRepairProcessSchema.CaseEntityLogicalName,
+                IncidentSchema.EntityLogicalName,
                 relatedCase.Id,
-                new ColumnSet(ComputerRepairProcessSchema.CaseRepairStatus));
-
-            OptionSetValue currentRepairStatus = currentCase.GetAttributeValue<OptionSetValue>(
-                ComputerRepairProcessSchema.CaseRepairStatus);
-
-            tracingService.Trace(
-                "Current Repair Status: {0}.",
-                currentRepairStatus == null ? "null" : currentRepairStatus.Value.ToString());
+                new ColumnSet(IncidentSchema.RepairStatus));
+            OptionSetValue currentRepairStatus = currentCase == null
+                ? null
+                : currentCase.GetAttributeValue<OptionSetValue>(IncidentSchema.RepairStatus);
 
             if (currentRepairStatus != null && currentRepairStatus.Value == targetRepairStatus)
             {
@@ -237,34 +129,38 @@ namespace RepairShop.Plugins.Plugins.Incident
                 return;
             }
 
-            var caseUpdate = new Entity(
-                ComputerRepairProcessSchema.CaseEntityLogicalName,
-                relatedCase.Id);
-            caseUpdate[ComputerRepairProcessSchema.CaseRepairStatus] =
-                new OptionSetValue(targetRepairStatus);
-
+            var caseUpdate = new Entity(IncidentSchema.EntityLogicalName, relatedCase.Id);
+            caseUpdate[IncidentSchema.RepairStatus] = new OptionSetValue(targetRepairStatus);
             organizationService.Update(caseUpdate);
 
             tracingService.Trace(
-                "Case update executed: {0} set to {1} on Case {2}.",
-                ComputerRepairProcessSchema.CaseRepairStatus,
+                "Case {0} Repair Status set to {1} for BPF stage '{2}'.",
+                relatedCase.Id,
                 targetRepairStatus,
-                relatedCase.Id);
+                stageName.Trim());
         }
 
-        private static bool TryGetTarget(
-            IPluginExecutionContext context,
-            out Entity target)
+        private static IOrganizationService GetOrganizationService(
+            IServiceProvider serviceProvider,
+            Guid userId)
         {
-            target = null;
-
-            if (!context.InputParameters.Contains("Target"))
+            var factory =
+                (IOrganizationServiceFactory)serviceProvider.GetService(
+                    typeof(IOrganizationServiceFactory));
+            if (factory == null)
             {
-                return false;
+                throw new InvalidPluginExecutionException(
+                    "The Dataverse organization service factory is unavailable.");
             }
 
-            target = context.InputParameters["Target"] as Entity;
-            return target != null;
+            IOrganizationService service = factory.CreateOrganizationService(userId);
+            if (service == null)
+            {
+                throw new InvalidPluginExecutionException(
+                    "The Dataverse organization service is unavailable.");
+            }
+
+            return service;
         }
     }
 }

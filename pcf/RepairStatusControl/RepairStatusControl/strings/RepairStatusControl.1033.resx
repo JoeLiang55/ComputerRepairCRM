@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="RepairStatusControl_DisplayName" xml:space="preserve"><value>Repair Progress</value></data>
+  <data name="RepairStatusControl_Description" xml:space="preserve"><value>Read-only horizontal progress indicator for repair status.</value></data>
+  <data name="RepairStatus_DisplayName" xml:space="preserve"><value>Repair Status</value></data>
+  <data name="RepairStatus_Description" xml:space="preserve"><value>Bind to the Case Repair Status Choice column.</value></data>
+</root>
