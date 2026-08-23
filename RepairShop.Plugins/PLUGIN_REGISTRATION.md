@@ -5,6 +5,45 @@ Build `RepairShop.Plugins.slnx` in Release and register
 Registration Tool. Use Database storage and Sandbox isolation. Dataverse provides
 the Microsoft SDK assemblies; upload only `RepairShop.Plugins.dll`.
 
+## PreventInvalidRepairStatusTransitionPlugin
+
+| Setting | Exact value used by this repository |
+| --- | --- |
+| Assembly | `RepairShop.Plugins.dll` |
+| Plug-in class | `RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin` |
+| Message | `Update` |
+| Primary table | `incident` |
+| Pipeline stage | `PreValidation` (10) |
+| Execution mode | `Synchronous` |
+| Filtering attributes | `cr1a3_repairstatus` |
+| Execution order | `10` |
+| Run in user's context | Calling User |
+| Deployment | Server |
+| Configuration | `none` (leave secure and unsecure configuration empty) |
+| Pre Image Name/Alias | `PreImage` |
+| Pre Image Attributes | `cr1a3_repairstatus` |
+| Post Image | None |
+
+Expected behavior: every submitted Case Repair Status change is checked against
+the server-side transition rules before the main database transaction starts.
+PreValidation is appropriate because this step only accepts or rejects input; it
+does not need to modify the row inside the transaction. Rejection therefore
+happens before core database work and before the completion step.
+
+This step permits the normal forward sequence, the Waiting for Parts exception,
+cancellation from any non-terminal repair status, and Ready for Pickup to
+Completed. Completed and Cancelled are terminal. Same-value submissions are
+accepted without work. Its rules include the four forward transitions among the
+five live BPF stages. A BPF attempt to skip or move backwards is rejected by the
+same server-side rule, so no change to `SyncRepairStatusFromBpfStagePlugin` is
+required.
+
+The transition step's execution order is `10`. The completion step remains order
+`20`; more importantly, pipeline stages guarantee that PreValidation transition
+checking runs before the PreOperation completion logic. When Ready for Pickup is
+changed to Completed, validation succeeds and the existing completion plug-in can
+stamp its completion fields normally.
+
 ## SyncRepairStatusFromBpfStagePlugin
 
 | Setting | Exact value used by this repository |

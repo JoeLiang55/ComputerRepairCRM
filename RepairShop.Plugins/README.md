@@ -13,8 +13,8 @@ RepairShop.Plugins/
   PLUGIN_REGISTRATION.md
   RepairShop.Plugins/
     Model/                  Dataverse logical names and Choice values
-    Plugins/Incident/       the two IPlugin entry points
-    Services/               testable completion and stage-mapping logic
+    Plugins/Incident/       the three IPlugin entry points
+    Services/               testable completion, transition, and stage-mapping logic
     PluginBase.cs           shared context, tracing, and exception boundary
     RepairShop.Plugins.csproj
   RepairShop.Plugins.Tests/ focused xUnit tests with small SDK mocks
@@ -44,6 +44,21 @@ transition to the confirmed Completed Choice, it validates Date Received,
 stamps Completion Date with `DateTime.UtcNow`, calculates elapsed whole minutes,
 and copies Estimated Cost only when Final Cost is empty. It changes the incoming
 `Target`, avoiding an additional `IOrganizationService.Update` call.
+
+`PreventInvalidRepairStatusTransitionPlugin` runs synchronously in PreValidation
+on Case Repair Status updates. It compares the sparse Target with `PreImage` and
+delegates the state-machine rule to `RepairStatusTransitionValidator`. Same-value
+updates are ignored; unsupported Choice values, skipped stages, backwards moves,
+and moves away from Completed or Cancelled are rejected with a safe status-name
+message. The permitted paths include the forward transitions among all five live
+BPF stages, Waiting for Parts exceptions, cancellation from every non-terminal status, and
+Ready for Pickup to Completed so the completion plug-in can run normally.
+
+This rule is enforced in a server-side plug-in instead of relying only on a
+Business Rule or form JavaScript. The server is the common enforcement boundary
+for model-driven UI saves, API updates, imports, Power Automate flows,
+integrations, and other server-side updates; a client-only rule can be bypassed
+by several of those paths.
 
 ## Dataverse SDK and framework
 
@@ -86,9 +101,9 @@ compare the Target/Image/current value before applying work.
 
 ### Pipeline choices
 
-- **PreValidation** runs before the main transaction and is useful for early
-  rejection or security checks. Neither plug-in uses it because completion values
-  must join the Case update and BPF synchronization needs the final stage value.
+- **PreValidation** runs before the main database transaction. Transition
+  validation uses it to reject an invalid request early, before transaction work
+  and before the PreOperation completion logic can execute.
 - **PreOperation** runs in the transaction before persistence. Completion uses it
   because changing the same record's `Target` is persisted with the original
   request, avoiding a second update and a recursive pipeline invocation.
@@ -97,28 +112,30 @@ compare the Target/Image/current value before applying work.
   BPF instance before updating the related Case.
 
 Entity images are transaction snapshots configured on a step. They are cheaper
-and more consistent than retrieving the same row. The completion Pre Image
-provides old/effective Case values; the BPF Post Image provides the current stage
-and Case lookup. Images intentionally include only required attributes.
+and more consistent than retrieving the same row. The transition Pre Image
+provides the prior Repair Status, the completion Pre Image provides old/effective
+Case values, and the BPF Post Image provides the current stage and Case lookup.
+Images intentionally include only required attributes.
 
-Both steps are synchronous because users need immediate Case consistency and
+All steps are synchronous because users need immediate Case consistency and
 immediate validation feedback. An asynchronous PostOperation step would suit
 non-blocking notifications or integrations where eventual consistency is
 acceptable, but it could not safely reject the initiating completion update.
 
 ## Recursion and unnecessary updates
 
+The validation step reads Target and Pre Image only and never issues an update.
 The completion step modifies `Target` in PreOperation and never calls Update.
 The BPF step updates a different table (`incident`) and compares the existing
 Repair Status first. Its mapping does not include Completed, so it cannot trigger
-completion behavior accidentally. Both classes trace `Depth` for diagnostics but
+completion behavior accidentally. All classes trace `Depth` for diagnostics but
 do not reject valid calls based solely on depth; correct message/table/stage checks,
 filtering attributes, transition checks, and sparse updates prevent recursion.
 
 ## Registration and metadata
 
 See [PLUGIN_REGISTRATION.md](PLUGIN_REGISTRATION.md) for exact step and image
-settings. Register the assembly and both steps in an unmanaged development
+settings. Register the assembly and all three steps in an unmanaged development
 solution, test them in a non-production environment, and deploy managed solutions
 to higher environments. Update existing assembly/step components rather than
 creating duplicates.
@@ -155,6 +172,10 @@ the C# plug-ins remain responsible for server-side synchronization and validatio
 - The execution pipeline determines transaction timing. PreOperation is ideal
   for changing the same row; PostOperation is appropriate here for reacting to
   the accepted BPF stage.
+- PreValidation is the best fit for a pure guard: it rejects invalid input before
+  the main database transaction. PreOperation is the better fit when code must
+  change the incoming Target as part of that transaction, as the completion
+  plug-in does.
 - `IPluginExecutionContext` supplies the message, table, stage, sparse Target,
   entity images, user, depth, and correlation identifiers.
 - `IOrganizationService` performs Dataverse operations. This project minimizes
