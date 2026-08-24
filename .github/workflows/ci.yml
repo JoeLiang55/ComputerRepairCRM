@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - dev
+  push:
+    branches:
+      - dev
+
+permissions:
+  contents: read
+
+jobs:
+  csharp:
+    name: C# plug-ins
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: RepairShop.Plugins
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v6
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Restore
+        run: dotnet restore RepairShop.Plugins.slnx
+
+      - name: Build
+        run: dotnet build RepairShop.Plugins.slnx --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test RepairShop.Plugins.slnx --configuration Release --no-build
+
+  pcf:
+    name: PCF control
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: pcf/RepairStatusControl
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: npm
+          cache-dependency-path: pcf/RepairStatusControl/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
