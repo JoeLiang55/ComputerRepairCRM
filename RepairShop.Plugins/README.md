@@ -13,8 +13,8 @@ RepairShop.Plugins/
   PLUGIN_REGISTRATION.md
   RepairShop.Plugins/
     Model/                  Dataverse logical names and Choice values
-    Plugins/Incident/       the three IPlugin entry points
-    Services/               testable completion, transition, and stage-mapping logic
+    Plugins/Incident/       the four IPlugin entry points
+    Services/               testable SLA, completion, transition, and stage logic
     PluginBase.cs           shared context, tracing, and exception boundary
     RepairShop.Plugins.csproj
   RepairShop.Plugins.Tests/ focused xUnit tests with small SDK mocks
@@ -53,6 +53,28 @@ and moves away from Completed or Cancelled are rejected with a safe status-name
 message. The permitted paths include the forward transitions among all five live
 BPF stages, Waiting for Parts exceptions, cancellation from every non-terminal status, and
 Ready for Pickup to Completed so the completion plug-in can run normally.
+
+`CalculateRepairDueDatePlugin` runs synchronously in PreOperation for Case Create
+and relevant Case Updates. It uses `cr1a3_datereceived` plus standard Case
+`prioritycode`, reconstructing effective Update values from the sparse Target and
+`PreImage`. It writes Repair Due Date directly to Target, avoids a second update,
+and delegates weekend-aware date arithmetic to `RepairSlaCalculator`. Missing Date
+Received is never replaced with the current time. Explicitly clearing it clears
+the due date; missing or unrecognized Priority never creates a misleading date.
+
+PreOperation is appropriate because the result belongs on the same Case being
+saved: changing Target participates in the original transaction and Dataverse
+persists it during the core operation. The server-side implementation applies to
+model-driven forms, APIs, imports, flows, and integrations, whereas form
+JavaScript can be bypassed. Filtering attributes reduce Update executions, but
+the plug-in still compares old and effective values because submitting an
+attribute does not prove its value changed. The narrow Pre Image supplies whichever
+SLA input the sparse Target omitted.
+
+`RepairSlaCalculator` accepts ordinary `DateTime` and priority values and has no
+dependency on plug-in context or organization services. Its business-day loop is
+unit tested independently and its business-day predicate is isolated so a future
+Dataverse holiday/business-closure calendar can replace weekend-only behavior.
 
 This rule is enforced in a server-side plug-in instead of relying only on a
 Business Rule or form JavaScript. The server is the common enforcement boundary
@@ -135,7 +157,8 @@ filtering attributes, transition checks, and sparse updates prevent recursion.
 ## Registration and metadata
 
 See [PLUGIN_REGISTRATION.md](PLUGIN_REGISTRATION.md) for exact step and image
-settings. Register the assembly and all three steps in an unmanaged development
+settings. Register the assembly and the existing three steps plus the two SLA
+steps in an unmanaged development
 solution, test them in a non-production environment, and deploy managed solutions
 to higher environments. Update existing assembly/step components rather than
 creating duplicates.
@@ -149,6 +172,12 @@ Dataverse evidence confirms `incident`, `cr1a3_repairstatus`,
 `gsic_completiondate`, Repair Duration as `gsic_repairduration`, and the BPF table
 as `gsic_computerrepairprocess`. Repair Duration is a Whole Number / Duration
 column and stores whole minutes.
+
+The repository contains no prior Priority reference, so the SLA plug-in uses the
+standard Case logical name `prioritycode` and Dataverse SDK default values High
+`1`, Normal `2`, and Low `3`. Repair Due Date remains intentionally unresolved:
+create the Case column, copy its generated logical name from Power Apps, replace
+the sentinel in `IncidentSchema.RepairDueDate`, and rebuild before deployment.
 
 Live metadata confirms the BPF active-stage attribute (`activestageid`), Case
 lookup (`bpf_incidentid`), and five BPF stages: Received, Diagnosing, Waiting For
@@ -191,3 +220,7 @@ the C# plug-ins remain responsible for server-side synchronization and validatio
   steps reduce user latency for work that can be eventually consistent.
 - Changing Target in PreOperation is preferable to issuing Update on the same
   record because it stays in the original transaction and avoids another pipeline.
+- The SLA calculator is isolated from Dataverse plumbing, making weekend boundary,
+  priority, and time-preservation rules deterministic unit tests. A future calendar
+  provider can incorporate Dataverse holidays and business closures without
+  rewriting the plug-in's Target/Pre Image merge logic.

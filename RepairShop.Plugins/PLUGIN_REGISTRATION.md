@@ -5,6 +5,63 @@ Build `RepairShop.Plugins.slnx` in Release and register
 Registration Tool. Use Database storage and Sandbox isolation. Dataverse provides
 the Microsoft SDK assemblies; upload only `RepairShop.Plugins.dll`.
 
+> **Repair Due Date deployment prerequisite:** do not register
+> `CalculateRepairDueDatePlugin` from this build yet. `IncidentSchema.RepairDueDate`
+> intentionally contains an unresolved sentinel. After creating the column in
+> Power Apps, replace the sentinel with the exact generated logical name and
+> rebuild; the guard deliberately rejects execution until that is done.
+
+## CalculateRepairDueDatePlugin
+
+The repository did not previously use or document Case Priority. This plug-in
+uses the standard Dataverse Case attribute `incident.prioritycode` and its default
+SDK Choice values: High `1`, Normal `2`, and Low `3`. Confirm those values in the
+target environment before registration if the standard Choice has been customized.
+
+### Create
+
+| Setting | Exact value |
+| --- | --- |
+| Plugin | `RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin` |
+| Message | `Create` |
+| Primary Entity | `incident` |
+| Stage | `PreOperation` (20) |
+| Mode | `Synchronous` |
+| Filtering Attributes | None |
+| Image | None |
+| Configuration | `none` (leave secure and unsecure configuration empty) |
+
+### Update
+
+| Setting | Exact value |
+| --- | --- |
+| Plugin | `RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin` |
+| Message | `Update` |
+| Primary Entity | `incident` |
+| Stage | `PreOperation` (20) |
+| Mode | `Synchronous` |
+| Filtering Attributes | `prioritycode,cr1a3_datereceived` |
+| Pre Image | Required |
+| Pre Image Name | `PreImage` |
+| Pre Image Alias | `PreImage` |
+| Pre Image Attributes | `prioritycode,cr1a3_datereceived` |
+| Post Image | None |
+| Configuration | `none` (leave secure and unsecure configuration empty) |
+
+The Create step reads Date Received and Priority from Target. The Update step
+merges sparse Target values with `PreImage`, then compares prior and effective
+values because filtering attributes prove only that a column was submitted—not
+that its value changed. Both steps add the calculated column directly to Target;
+neither issues `IOrganizationService.Update`.
+
+Date Received is never replaced with the current time. Missing Date Received on
+Create is traced and skipped. Explicitly clearing Date Received on Update clears
+Repair Due Date. A missing or unrecognized effective Priority does not produce a
+date; on Update, the output is cleared to avoid retaining a misleading SLA.
+
+The configured SLAs are Low = 7, Normal = 5, and High = 2 business days. Saturdays
+and Sundays are skipped; holidays are not yet modeled. Time-of-day is preserved.
+
 ## PreventInvalidRepairStatusTransitionPlugin
 
 | Setting | Exact value used by this repository |

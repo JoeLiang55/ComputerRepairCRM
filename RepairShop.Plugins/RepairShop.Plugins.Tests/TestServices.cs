@@ -37,7 +37,8 @@ namespace RepairShop.Plugins.Tests
             Guid primaryEntityId,
             Entity target,
             Entity preImage = null,
-            Entity postImage = null)
+            Entity postImage = null,
+            string messageName = "Update")
         {
             var inputParameters = new ParameterCollection
             {
@@ -55,7 +56,7 @@ namespace RepairShop.Plugins.Tests
             }
 
             var context = new Mock<IPluginExecutionContext>();
-            context.SetupGet(item => item.MessageName).Returns("Update");
+            context.SetupGet(item => item.MessageName).Returns(messageName);
             context.SetupGet(item => item.PrimaryEntityName).Returns(primaryEntityName);
             context.SetupGet(item => item.PrimaryEntityId).Returns(primaryEntityId);
             context.SetupGet(item => item.Stage).Returns(stage);
