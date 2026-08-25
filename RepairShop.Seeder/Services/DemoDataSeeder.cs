@@ -25,27 +25,33 @@ internal sealed class DemoDataSeeder(
             ? options.Defaults.InventoryCount
             : 0;
 
-        Console.WriteLine($"Seed batch: {batchId:D}");
-        Console.WriteLine("The batch identifier is written to every record before any relationships are created.");
+        if (SeedTag.IsCleanupAvailable(options.Schema))
+        {
+            Console.WriteLine($"Seed batch: {batchId:D}");
+            Console.WriteLine("The batch identifier is written to every seeded record.");
+        }
+        else
+        {
+            Console.WriteLine($"Seed run: {batchId:D}");
+            Console.WriteLine("This seed run is not tagged for automated cleanup.");
+        }
 
-        var contactSeeder = new ContactSeeder(service, options.Schema.Contact, random);
+        var contactSeeder = new ContactSeeder(service, options.Schema.ContactSeedBatch, random);
         var deviceSeeder = new DeviceSeeder(
             service,
-            options.Schema.Device,
-            options.Schema.Contact,
+            options.Schema.DeviceSeedBatch,
             random);
         var caseSeeder = new CaseSeeder(
             service,
-            options.Schema.Case,
-            options.Schema.Contact,
-            options.Schema.Device,
+            options.Schema.CaseSeedBatch,
             random);
-        var inventorySeeder = new InventorySeeder(service, options.Schema.Inventory, random);
+        var inventorySeeder = new InventorySeeder(
+            service,
+            options.Schema.InventorySeedBatch,
+            random);
         var repairPartSeeder = new RepairPartSeeder(
             service,
-            options.Schema.RepairPart,
-            options.Schema.Case,
-            options.Schema.Inventory,
+            options.Schema.RepairPartSeedBatch,
             random);
 
         IReadOnlyList<SeededContact> contacts = contactCount > 0

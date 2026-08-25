@@ -18,54 +18,75 @@ decrement, reorder, or otherwise implement inventory business logic.
 
 - .NET 8 SDK
 - A non-production Dataverse development environment
-- An identity with appropriate Dataverse privileges
+- A Microsoft account with appropriate Dataverse privileges
 - Existing Contact, Device, Case, Inventory, and Repair Part tables/columns
-- A writable Text column of at least 60 characters on every seeded table for the
-  seed batch tag
+- Optional writable Text columns of at least 60 characters if automated cleanup
+  is required
 
-The repository's unpacked solution does not contain Device, Inventory, or Repair
-Part metadata. Their logical names are therefore deliberately not guessed.
-Configure the exact logical names from Power Apps before running the utility.
+The authoritative XrmToolBox exports are `../case_dataverse.xlsx`,
+`../device_dataverse.xlsx`, `../inventory_dataverse.xlsx`, and
+`../repairpart_dataverse.xlsx`. Their exported logical names and types are
+compiled in `Schema/DataverseSchema.cs`; they are not environment configuration.
+The exports do not contain lookup target metadata. The Incident export confirms
+the `gsic_device` Device lookup.
 
 ## Configuration
 
-The checked-in `appsettings.json` contains safe defaults and schema placeholders.
+The checked-in `appsettings.json` contains safe defaults and no placeholders.
 Create an ignored `appsettings.Local.json` beside it and override the environment-
 specific values. Objects are merged recursively, so the local file only needs to
 contain changed settings.
 
-Example:
+For local interactive authentication, optionally put the environment URL in the
+checked-in `appsettings.json` or the ignored local file. If it is empty, the
+seeder prompts for it:
 
 ```json
 {
   "Dataverse": {
-    "ConnectionString": "AuthType=ClientSecret;Url=https://YOUR-ORG.crm.dynamics.com;ClientId=YOUR-APP-ID;ClientSecret=YOUR-SECRET;RequireNewInstance=true"
-  },
-  "Schema": {
-    "Contact": {
-      "SeedBatch": "your_contactseedbatch"
-    },
-    "Device": {
-      "Entity": "your_device",
-      "Name": "your_name",
-      "Manufacturer": "your_manufacturer",
-      "Model": "your_model",
-      "SerialNumber": "your_serialnumber",
-      "WarrantyExpiry": "your_warrantyexpiry",
-      "ContactLookup": "your_contactid",
-      "SeedBatch": "your_seedbatch"
-    }
+    "Url": "https://orgc68493d4.crm.dynamics.com"
   }
 }
 ```
 
-Complete every `REPLACE_WITH_...` entry from `appsettings.json` in the local
-override. The application performs a metadata preflight before writing data. It
-checks that tables and columns exist, seed batch columns are Text, configured
-column types are compatible, and relationship lookups target the expected table.
+Run a seed command and complete the Microsoft sign-in window. Interactive mode
+does not require you to create an Azure app registration or configure a client
+ID or client secret.
 
-The connection string can instead be supplied through the environment, which
-overrides either JSON file:
+For unattended or application-user authentication, a complete ServiceClient
+connection string can still be placed in `appsettings.Local.json`:
+
+```json
+{
+  "Dataverse": {
+    "ConnectionString": "AuthType=ClientSecret;Url=https://orgc68493d4.crm.dynamics.com;ClientId=YOUR-APP-ID;ClientSecret=YOUR-SECRET;RequireNewInstance=true"
+  },
+  "Schema": {
+    "ContactSeedBatch": "",
+    "CaseSeedBatch": "",
+    "DeviceSeedBatch": "",
+    "InventorySeedBatch": "",
+    "RepairPartSeedBatch": ""
+  }
+}
+```
+
+The current exports do not contain Seed Batch columns. These five settings are
+optional and empty by default. Seeding continues without them, but automated
+cleanup is unavailable. If all five are configured, the application writes the
+same batch tag to every row and enables `--clear`. A live metadata preflight runs
+before writing data and checks that tables and columns exist, configured Seed
+Batch columns are Text, types are compatible, and relationship lookups target the
+expected table.
+
+Authentication settings are selected in this order:
+
+1. `DATAVERSE_CONNECTION_STRING`
+2. `Dataverse:ConnectionString` from `appsettings.Local.json`
+3. Interactive OAuth using `Dataverse:Url`, prompting for the URL when empty
+
+The environment connection string is passed directly to `ServiceClient` and
+overrides local JSON:
 
 ```powershell
 $env:DATAVERSE_CONNECTION_STRING = 'AuthType=ClientSecret;Url=https://YOUR-ORG.crm.dynamics.com;ClientId=YOUR-APP-ID;ClientSecret=YOUR-SECRET;RequireNewInstance=true'
@@ -85,7 +106,9 @@ already excluded by the repository `.gitignore`.
 | Estimated Cost, Final Cost, Unit Cost | Currency |
 | Repair Duration, stock quantity, part quantity | Whole Number |
 
-The confirmed Case schema defaults are `incident`, `prioritycode`,
+Standard Contact and Case fields plus all custom fields proven by the XrmToolBox
+exports are compiled shared constants rather than configuration. The confirmed
+Case schema is `incident`, `prioritycode`,
 `cr1a3_repairstatus`, `cr1a3_datereceived`, `cr1a3_estimatedcost`,
 `cr1a3_finalcost`, `gsic_completiondate`, and `gsic_repairduration`.
 
@@ -106,14 +129,16 @@ dotnet run --project RepairShop.Seeder.csproj -- --cases 100 --inventory
   attach demo Cases to unrelated existing customer data.
 - `--inventory` creates the configured default number of Inventory items.
 - Combining `--cases N --inventory` also creates Repair Part associations.
-- `--clear` is the only command that deletes data.
+- `--clear` is the only command that deletes data and is enabled only when every
+  Seed Batch setting is configured.
 
 Default counts and an optional repeatable random seed can be changed under
 `Defaults` in configuration.
 
 ## Cleanup safety
 
-Every created row receives a tag in its configured Seed Batch column:
+When all five optional Seed Batch columns are configured, every created row
+receives this tag:
 
 ```text
 RepairShop.Seeder:<batch-guid>
@@ -124,32 +149,39 @@ children before parents and never queries untagged records for deletion. Deletio
 requires typing the exact word `CLEAR` interactively; redirected/non-interactive
 input is rejected.
 
-If a run fails partway through, the records already created retain their batch
-tag and can be removed with a later confirmed `--clear` run.
+If any Seed Batch setting is empty, seeding prints a warning and continues, while
+`--clear` is disabled before a Dataverse connection is attempted.
 
-## Dataverse application-user setup
+When tagging is enabled, records created before a partial failure retain their
+batch tag and can be removed with a later confirmed `--clear` run.
 
-1. Register a single-tenant application in Microsoft Entra ID and create a client
-   secret (or use another `ServiceClient`-supported connection string).
-2. In Power Platform admin center, open the development environment, then go to
-   **Settings > Users + permissions > Application users** and add that app.
-3. Assign a development-only security role. It needs metadata read access and
+## Dataverse access setup
+
+1. Ensure your Microsoft account has access to the development environment.
+2. Assign a development-only security role. It needs metadata read access and
    organization-level Create, Read, Delete, Append, and Append To privileges for
    Contact, Device, Case, Inventory, and Repair Part. Add privileges required by
    any synchronous plug-ins that execute during Case creation.
-4. Copy every table and column logical name from Power Apps into
-   `appsettings.Local.json`. Do not use display names or schema names.
-5. Set `DATAVERSE_CONNECTION_STRING` or the ignored local JSON connection string.
-6. Run `dotnet run --project RepairShop.Seeder.csproj -- --contacts 1` first. The
+3. Optionally add/export Seed Batch Text columns for every seeded table and put
+   those five logical names in `appsettings.Local.json` to enable `--clear`.
+   Standard and exported logical names are not configured.
+4. Set `Dataverse:Url` or enter it when prompted, then run
+   `dotnet run --project RepairShop.Seeder.csproj -- --contacts 1`. Complete the
+   Microsoft login window. The
    metadata preflight will report any incorrect mapping before record creation.
-7. Run `--seed`, inspect the generated batch in the model-driven app, and use
+5. Run `--seed`, inspect the generated data in the model-driven app, and use
    `--clear` when the demo data is no longer needed.
+
+For application-user automation, register an application, add it as a Dataverse
+application user, and supply its full connection string through either of the
+two higher-priority sources above.
 
 Microsoft documentation:
 
 - [Register an application and create a Dataverse application user](https://learn.microsoft.com/power-apps/developer/data-platform/walkthrough-register-app-azure-active-directory)
 - [Manage application users](https://learn.microsoft.com/power-platform/admin/manage-application-users)
 - [Use Dataverse connection strings](https://learn.microsoft.com/power-apps/developer/data-platform/xrm-tooling/use-connection-strings-xrm-tooling-connect)
+- [ServiceClient interactive OAuth sample](https://github.com/microsoft/PowerApps-Samples/tree/master/dataverse/orgsvc/CSharp-NETCore/ServiceClient)
 - [Dataverse security concepts](https://learn.microsoft.com/power-apps/developer/data-platform/security-concepts)
 
 ## Build

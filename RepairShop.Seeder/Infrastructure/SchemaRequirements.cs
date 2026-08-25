@@ -1,6 +1,7 @@
 using RepairShop.Seeder.CommandLine;
 using RepairShop.Seeder.Configuration;
 using Microsoft.Xrm.Sdk.Metadata;
+using RepairShop.Seeder.Schema;
 
 namespace RepairShop.Seeder.Infrastructure;
 
@@ -46,138 +47,152 @@ internal static class SchemaRequirements
         {
             tables.Add(new TableRequirement(
                 "Contact",
-                schema.Contact.Entity,
-                schema.Contact.SeedBatch,
-                [schema.Contact.FirstName, schema.Contact.LastName, schema.Contact.Email, schema.Contact.Phone]));
+                DataverseSchema.Contact.Entity,
+                schema.ContactSeedBatch,
+                [
+                    DataverseSchema.Contact.FirstName,
+                    DataverseSchema.Contact.LastName,
+                    DataverseSchema.Contact.Email,
+                    DataverseSchema.Contact.Phone
+                ]));
             AddTypes(
                 attributeTypes,
                 "Contact",
-                schema.Contact.Entity,
+                DataverseSchema.Contact.Entity,
                 AttributeTypeCode.String,
-                schema.Contact.FirstName,
-                schema.Contact.LastName,
-                schema.Contact.Email,
-                schema.Contact.Phone);
+                DataverseSchema.Contact.FirstName,
+                DataverseSchema.Contact.LastName,
+                DataverseSchema.Contact.Email,
+                DataverseSchema.Contact.Phone);
         }
 
         if (needsCases)
         {
             tables.Add(new TableRequirement(
                 "Device",
-                schema.Device.Entity,
-                schema.Device.SeedBatch,
+                DataverseSchema.Device.Entity,
+                schema.DeviceSeedBatch,
                 [
-                    schema.Device.Name,
-                    schema.Device.Manufacturer,
-                    schema.Device.Model,
-                    schema.Device.SerialNumber,
-                    schema.Device.WarrantyExpiry,
-                    schema.Device.ContactLookup
+                    DataverseSchema.Device.Name,
+                    DataverseSchema.Device.Manufacturer,
+                    DataverseSchema.Device.Model,
+                    DataverseSchema.Device.SerialNumber,
+                    DataverseSchema.Device.WarrantyExpiry,
+                    DataverseSchema.Device.PurchaseDate,
+                    DataverseSchema.Device.Customer
                 ]));
             tables.Add(new TableRequirement(
                 "Case",
-                schema.Case.Entity,
-                schema.Case.SeedBatch,
+                DataverseSchema.Incident.Entity,
+                schema.CaseSeedBatch,
                 [
-                    schema.Case.Title,
-                    schema.Case.CustomerLookup,
-                    schema.Case.DeviceLookup,
-                    schema.Case.Priority,
-                    schema.Case.RepairStatus,
-                    schema.Case.DateReceived,
-                    schema.Case.EstimatedCost,
-                    schema.Case.FinalCost,
-                    schema.Case.CompletionDate,
-                    schema.Case.RepairDuration
+                    DataverseSchema.Incident.Title,
+                    DataverseSchema.Incident.Customer,
+                    DataverseSchema.Incident.Device,
+                    DataverseSchema.Incident.Priority,
+                    DataverseSchema.Incident.RepairStatus,
+                    DataverseSchema.Incident.DateReceived,
+                    DataverseSchema.Incident.EstimatedCost,
+                    DataverseSchema.Incident.FinalCost,
+                    DataverseSchema.Incident.CompletionDate,
+                    DataverseSchema.Incident.RepairDuration
                 ]));
             lookups.Add(new LookupRequirement(
                 "Device.Contact",
-                schema.Device.Entity,
-                schema.Device.ContactLookup,
-                schema.Contact.Entity));
+                DataverseSchema.Device.Entity,
+                DataverseSchema.Device.Customer,
+                DataverseSchema.Contact.Entity));
             lookups.Add(new LookupRequirement(
                 "Case.Device",
-                schema.Case.Entity,
-                schema.Case.DeviceLookup,
-                schema.Device.Entity));
+                DataverseSchema.Incident.Entity,
+                DataverseSchema.Incident.Device,
+                DataverseSchema.Device.Entity));
             lookups.Add(new LookupRequirement(
                 "Case.Customer",
-                schema.Case.Entity,
-                schema.Case.CustomerLookup,
-                schema.Contact.Entity));
-            AddTypes(attributeTypes, "Device text", schema.Device.Entity, AttributeTypeCode.String,
-                schema.Device.Name, schema.Device.Manufacturer, schema.Device.Model, schema.Device.SerialNumber);
-            AddTypes(attributeTypes, "Device date", schema.Device.Entity, AttributeTypeCode.DateTime,
-                schema.Device.WarrantyExpiry);
-            AddTypes(attributeTypes, "Device lookup", schema.Device.Entity, AttributeTypeCode.Lookup,
-                schema.Device.ContactLookup);
-            AddTypes(attributeTypes, "Case text", schema.Case.Entity, AttributeTypeCode.String,
-                schema.Case.Title);
+                DataverseSchema.Incident.Entity,
+                DataverseSchema.Incident.Customer,
+                DataverseSchema.Contact.Entity));
+            AddTypes(attributeTypes, "Device text", DataverseSchema.Device.Entity, AttributeTypeCode.String,
+                DataverseSchema.Device.Name,
+                DataverseSchema.Device.Manufacturer,
+                DataverseSchema.Device.Model,
+                DataverseSchema.Device.SerialNumber);
+            AddTypes(attributeTypes, "Device date", DataverseSchema.Device.Entity, AttributeTypeCode.DateTime,
+                DataverseSchema.Device.WarrantyExpiry, DataverseSchema.Device.PurchaseDate);
+            AddTypes(attributeTypes, "Device lookup", DataverseSchema.Device.Entity, AttributeTypeCode.Lookup,
+                DataverseSchema.Device.Customer);
+            AddTypes(attributeTypes, "Case text", DataverseSchema.Incident.Entity, AttributeTypeCode.String,
+                DataverseSchema.Incident.Title);
             attributeTypes.Add(new AttributeTypeRequirement(
                 "Case customer lookup",
-                schema.Case.Entity,
-                schema.Case.CustomerLookup,
+                DataverseSchema.Incident.Entity,
+                DataverseSchema.Incident.Customer,
                 [AttributeTypeCode.Customer, AttributeTypeCode.Lookup]));
-            AddTypes(attributeTypes, "Case lookup", schema.Case.Entity, AttributeTypeCode.Lookup,
-                schema.Case.DeviceLookup);
-            AddTypes(attributeTypes, "Case Choice", schema.Case.Entity, AttributeTypeCode.Picklist,
-                schema.Case.Priority, schema.Case.RepairStatus);
-            AddTypes(attributeTypes, "Case date", schema.Case.Entity, AttributeTypeCode.DateTime,
-                schema.Case.DateReceived, schema.Case.CompletionDate);
-            AddTypes(attributeTypes, "Case currency", schema.Case.Entity, AttributeTypeCode.Money,
-                schema.Case.EstimatedCost, schema.Case.FinalCost);
-            AddTypes(attributeTypes, "Case duration", schema.Case.Entity, AttributeTypeCode.Integer,
-                schema.Case.RepairDuration);
+            AddTypes(attributeTypes, "Case lookup", DataverseSchema.Incident.Entity, AttributeTypeCode.Lookup,
+                DataverseSchema.Incident.Device);
+            AddTypes(attributeTypes, "Case Choice", DataverseSchema.Incident.Entity, AttributeTypeCode.Picklist,
+                DataverseSchema.Incident.Priority, DataverseSchema.Incident.RepairStatus);
+            AddTypes(attributeTypes, "Case date", DataverseSchema.Incident.Entity, AttributeTypeCode.DateTime,
+                DataverseSchema.Incident.DateReceived, DataverseSchema.Incident.CompletionDate);
+            AddTypes(attributeTypes, "Case currency", DataverseSchema.Incident.Entity, AttributeTypeCode.Money,
+                DataverseSchema.Incident.EstimatedCost, DataverseSchema.Incident.FinalCost);
+            AddTypes(attributeTypes, "Case duration", DataverseSchema.Incident.Entity, AttributeTypeCode.Integer,
+                DataverseSchema.Incident.RepairDuration);
         }
 
         if (needsInventory)
         {
             tables.Add(new TableRequirement(
                 "Inventory",
-                schema.Inventory.Entity,
-                schema.Inventory.SeedBatch,
+                DataverseSchema.Inventory.Entity,
+                schema.InventorySeedBatch,
                 [
-                    schema.Inventory.Name,
-                    schema.Inventory.Sku,
-                    schema.Inventory.StockQuantity,
-                    schema.Inventory.UnitCost
+                    DataverseSchema.Inventory.Name,
+                    DataverseSchema.Inventory.Sku,
+                    DataverseSchema.Inventory.StockQuantity,
+                    DataverseSchema.Inventory.UnitCost,
+                    DataverseSchema.Inventory.ReorderLevel
                 ]));
-            AddTypes(attributeTypes, "Inventory text", schema.Inventory.Entity, AttributeTypeCode.String,
-                schema.Inventory.Name, schema.Inventory.Sku);
-            AddTypes(attributeTypes, "Inventory quantity", schema.Inventory.Entity, AttributeTypeCode.Integer,
-                schema.Inventory.StockQuantity);
-            AddTypes(attributeTypes, "Inventory currency", schema.Inventory.Entity, AttributeTypeCode.Money,
-                schema.Inventory.UnitCost);
+            AddTypes(attributeTypes, "Inventory text", DataverseSchema.Inventory.Entity, AttributeTypeCode.String,
+                DataverseSchema.Inventory.Name, DataverseSchema.Inventory.Sku);
+            AddTypes(attributeTypes, "Inventory quantity", DataverseSchema.Inventory.Entity, AttributeTypeCode.Integer,
+                DataverseSchema.Inventory.StockQuantity, DataverseSchema.Inventory.ReorderLevel);
+            AddTypes(attributeTypes, "Inventory currency", DataverseSchema.Inventory.Entity, AttributeTypeCode.Money,
+                DataverseSchema.Inventory.UnitCost);
         }
 
         if (needsRepairParts)
         {
             tables.Add(new TableRequirement(
                 "Repair Part",
-                schema.RepairPart.Entity,
-                schema.RepairPart.SeedBatch,
+                DataverseSchema.RepairPart.Entity,
+                schema.RepairPartSeedBatch,
                 [
-                    schema.RepairPart.Name,
-                    schema.RepairPart.CaseLookup,
-                    schema.RepairPart.InventoryLookup,
-                    schema.RepairPart.Quantity
+                    DataverseSchema.RepairPart.Name,
+                    DataverseSchema.RepairPart.Case,
+                    DataverseSchema.RepairPart.Inventory,
+                    DataverseSchema.RepairPart.Quantity,
+                    DataverseSchema.RepairPart.UnitCost,
+                    DataverseSchema.RepairPart.TotalCost
                 ]));
             lookups.Add(new LookupRequirement(
                 "Repair Part.Case",
-                schema.RepairPart.Entity,
-                schema.RepairPart.CaseLookup,
-                schema.Case.Entity));
+                DataverseSchema.RepairPart.Entity,
+                DataverseSchema.RepairPart.Case,
+                DataverseSchema.Incident.Entity));
             lookups.Add(new LookupRequirement(
                 "Repair Part.Inventory",
-                schema.RepairPart.Entity,
-                schema.RepairPart.InventoryLookup,
-                schema.Inventory.Entity));
-            AddTypes(attributeTypes, "Repair Part text", schema.RepairPart.Entity, AttributeTypeCode.String,
-                schema.RepairPart.Name);
-            AddTypes(attributeTypes, "Repair Part lookup", schema.RepairPart.Entity, AttributeTypeCode.Lookup,
-                schema.RepairPart.CaseLookup, schema.RepairPart.InventoryLookup);
-            AddTypes(attributeTypes, "Repair Part quantity", schema.RepairPart.Entity, AttributeTypeCode.Integer,
-                schema.RepairPart.Quantity);
+                DataverseSchema.RepairPart.Entity,
+                DataverseSchema.RepairPart.Inventory,
+                DataverseSchema.Inventory.Entity));
+            AddTypes(attributeTypes, "Repair Part text", DataverseSchema.RepairPart.Entity, AttributeTypeCode.String,
+                DataverseSchema.RepairPart.Name);
+            AddTypes(attributeTypes, "Repair Part lookup", DataverseSchema.RepairPart.Entity, AttributeTypeCode.Lookup,
+                DataverseSchema.RepairPart.Case, DataverseSchema.RepairPart.Inventory);
+            AddTypes(attributeTypes, "Repair Part quantity", DataverseSchema.RepairPart.Entity, AttributeTypeCode.Integer,
+                DataverseSchema.RepairPart.Quantity);
+            AddTypes(attributeTypes, "Repair Part currency", DataverseSchema.RepairPart.Entity, AttributeTypeCode.Money,
+                DataverseSchema.RepairPart.UnitCost, DataverseSchema.RepairPart.TotalCost);
         }
 
         return new SchemaRequirementSet(tables, lookups, attributeTypes);

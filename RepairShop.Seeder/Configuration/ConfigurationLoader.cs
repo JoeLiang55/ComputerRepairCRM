@@ -14,9 +14,12 @@ internal static class ConfigurationLoader
 
         JsonNode root = Parse(basePath);
         string? localPath = FindConfigurationFile("appsettings.Local.json");
+        string? localConnectionString = null;
         if (localPath is not null)
         {
-            Merge(root, Parse(localPath));
+            JsonNode localRoot = Parse(localPath);
+            localConnectionString = localRoot["Dataverse"]?["ConnectionString"]?.GetValue<string>();
+            Merge(root, localRoot);
         }
 
         var options = root.Deserialize<SeederOptions>(new JsonSerializerOptions
@@ -26,10 +29,9 @@ internal static class ConfigurationLoader
 
         string? environmentConnectionString =
             Environment.GetEnvironmentVariable(ConnectionStringEnvironmentVariable);
-        if (!string.IsNullOrWhiteSpace(environmentConnectionString))
-        {
-            options.Dataverse.ConnectionString = environmentConnectionString;
-        }
+        options.Dataverse.ConnectionString = !string.IsNullOrWhiteSpace(environmentConnectionString)
+            ? environmentConnectionString
+            : localConnectionString ?? string.Empty;
 
         ValidateDefaults(options.Defaults);
         return options;

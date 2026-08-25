@@ -1,14 +1,13 @@
 using Microsoft.Xrm.Sdk;
-using RepairShop.Seeder.Configuration;
 using RepairShop.Seeder.Models;
+using RepairShop.Seeder.Infrastructure;
+using RepairShop.Seeder.Schema;
 
 namespace RepairShop.Seeder.Services;
 
 internal sealed class RepairPartSeeder(
     IOrganizationService service,
-    RepairPartSchema schema,
-    CaseSchema caseSchema,
-    InventorySchema inventorySchema,
+    string seedBatchAttribute,
     Random random)
 {
     public int Seed(
@@ -29,20 +28,27 @@ internal sealed class RepairPartSeeder(
                          .OrderBy(_ => random.Next())
                          .Take(partCount))
             {
+                int quantity = random.Next(1, 3);
                 string name = $"{item.Name} for {repairCase.Title}";
                 if (name.Length > 95)
                 {
                     name = name[..95];
                 }
 
-                var repairPart = new Entity(schema.Entity)
+                var repairPart = new Entity(DataverseSchema.RepairPart.Entity)
                 {
-                    [schema.Name] = name,
-                    [schema.CaseLookup] = new EntityReference(caseSchema.Entity, repairCase.Id),
-                    [schema.InventoryLookup] = new EntityReference(inventorySchema.Entity, item.Id),
-                    [schema.Quantity] = random.Next(1, 3),
-                    [schema.SeedBatch] = seedTag
+                    [DataverseSchema.RepairPart.Name] = name,
+                    [DataverseSchema.RepairPart.Case] = new EntityReference(
+                        DataverseSchema.Incident.Entity,
+                        repairCase.Id),
+                    [DataverseSchema.RepairPart.Inventory] = new EntityReference(
+                        DataverseSchema.Inventory.Entity,
+                        item.Id),
+                    [DataverseSchema.RepairPart.Quantity] = quantity,
+                    [DataverseSchema.RepairPart.UnitCost] = new Money(item.UnitCost),
+                    [DataverseSchema.RepairPart.TotalCost] = new Money(item.UnitCost * quantity)
                 };
+                SeedTag.Apply(repairPart, seedBatchAttribute, seedTag);
                 service.Create(repairPart);
                 created++;
             }

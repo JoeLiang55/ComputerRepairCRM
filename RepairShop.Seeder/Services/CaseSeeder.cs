@@ -1,15 +1,14 @@
 using Microsoft.Xrm.Sdk;
-using RepairShop.Seeder.Configuration;
 using RepairShop.Seeder.Data;
+using RepairShop.Seeder.Infrastructure;
 using RepairShop.Seeder.Models;
+using RepairShop.Seeder.Schema;
 
 namespace RepairShop.Seeder.Services;
 
 internal sealed class CaseSeeder(
     IOrganizationService service,
-    CaseSchema schema,
-    ContactSchema contactSchema,
-    DeviceSchema deviceSchema,
+    string seedBatchAttribute,
     Random random)
 {
     private const int Received = 702670000;
@@ -65,17 +64,21 @@ internal sealed class CaseSeeder(
             int repairStatus = random.Pick(RepairStatuses);
             string title = $"{device.DisplayName} {random.Pick(Problems)}";
 
-            var repairCase = new Entity(schema.Entity)
+            var repairCase = new Entity(DataverseSchema.Incident.Entity)
             {
-                [schema.Title] = title,
-                [schema.CustomerLookup] = new EntityReference(contactSchema.Entity, device.ContactId),
-                [schema.DeviceLookup] = new EntityReference(deviceSchema.Entity, device.Id),
-                [schema.Priority] = new OptionSetValue(random.Next(1, 4)),
-                [schema.RepairStatus] = new OptionSetValue(repairStatus),
-                [schema.DateReceived] = received,
-                [schema.EstimatedCost] = new Money(estimatedCost),
-                [schema.SeedBatch] = seedTag
+                [DataverseSchema.Incident.Title] = title,
+                [DataverseSchema.Incident.Customer] = new EntityReference(
+                    DataverseSchema.Contact.Entity,
+                    device.ContactId),
+                [DataverseSchema.Incident.Device] = new EntityReference(
+                    DataverseSchema.Device.Entity,
+                    device.Id),
+                [DataverseSchema.Incident.Priority] = new OptionSetValue(random.Next(1, 4)),
+                [DataverseSchema.Incident.RepairStatus] = new OptionSetValue(repairStatus),
+                [DataverseSchema.Incident.DateReceived] = received,
+                [DataverseSchema.Incident.EstimatedCost] = new Money(estimatedCost)
             };
+            SeedTag.Apply(repairCase, seedBatchAttribute, seedTag);
 
             if (repairStatus == Completed)
             {
@@ -85,10 +88,10 @@ internal sealed class CaseSeeder(
                     completion = now;
                 }
 
-                repairCase[schema.FinalCost] = new Money(
+                repairCase[DataverseSchema.Incident.FinalCost] = new Money(
                     decimal.Round(estimatedCost * random.Money(0.85m, 1.25m), 2));
-                repairCase[schema.CompletionDate] = completion;
-                repairCase[schema.RepairDuration] = Math.Max(
+                repairCase[DataverseSchema.Incident.CompletionDate] = completion;
+                repairCase[DataverseSchema.Incident.RepairDuration] = Math.Max(
                     1,
                     checked((int)(completion - received).TotalMinutes));
             }

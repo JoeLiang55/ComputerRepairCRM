@@ -4,7 +4,7 @@ internal sealed record SeededContact(Guid Id);
 
 internal sealed record SeededDevice(Guid Id, Guid ContactId, string DisplayName);
 
-internal sealed record SeededInventoryItem(Guid Id, string Name);
+internal sealed record SeededInventoryItem(Guid Id, string Name, decimal UnitCost);
 
 internal sealed record SeededCase(Guid Id, string Title);
 

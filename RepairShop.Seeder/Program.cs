@@ -21,9 +21,24 @@ internal static class Program
             }
 
             SeederOptions options = ConfigurationLoader.Load();
-            using ServiceClient client = DataverseConnectionFactory.Connect(options.Dataverse);
+            bool cleanupAvailable = SeedTag.IsCleanupAvailable(options.Schema);
+            if (command.Clear && !cleanupAvailable)
+            {
+                Console.Error.WriteLine(
+                    "Clear is unavailable because Seed Batch columns are not configured for every seeded table.");
+                return 3;
+            }
+
+            if (!command.Clear && !cleanupAvailable)
+            {
+                Console.WriteLine(
+                    "WARNING: Seed Batch columns are not fully configured. Seeding is enabled, but --clear is unavailable.");
+            }
 
             SchemaRequirementSet requirements = SchemaRequirements.ForCommand(command, options.Schema);
+            SchemaValidator.ValidateConfiguration(requirements);
+
+            using ServiceClient client = DataverseConnectionFactory.Connect(options.Dataverse);
             Console.WriteLine("Validating configured tables, columns, and lookup targets...");
             new SchemaValidator(client).Validate(requirements);
             Console.WriteLine("Schema validation passed.");
@@ -38,7 +53,7 @@ internal static class Program
                 : new Random();
             SeedRunResult result = new DemoDataSeeder(client, options, random).Seed(command);
             Console.WriteLine();
-            Console.WriteLine($"Seed batch {result.BatchId:D} completed successfully.");
+            Console.WriteLine($"Seed run {result.BatchId:D} completed successfully.");
             return 0;
         }
         catch (ArgumentException exception)

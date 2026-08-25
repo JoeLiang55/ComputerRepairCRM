@@ -12,6 +12,8 @@ internal sealed class SeederOptions
 internal sealed class DataverseOptions
 {
     public string ConnectionString { get; set; } = string.Empty;
+
+    public string Url { get; set; } = string.Empty;
 }
 
 internal sealed class DefaultSeedOptions

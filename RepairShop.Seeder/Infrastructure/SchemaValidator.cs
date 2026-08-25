@@ -6,19 +6,25 @@ namespace RepairShop.Seeder.Infrastructure;
 
 internal sealed class SchemaValidator(IOrganizationService service)
 {
-    public void Validate(SchemaRequirementSet requirements)
+    public static void ValidateConfiguration(SchemaRequirementSet requirements)
     {
-        var metadataByEntity = new Dictionary<string, EntityMetadata>(StringComparer.OrdinalIgnoreCase);
-
         foreach (TableRequirement table in requirements.Tables)
         {
             ValidateConfiguredName(table.DisplayName + " table", table.Entity);
-            ValidateConfiguredName(table.DisplayName + " seed batch column", table.SeedBatchAttribute);
             foreach (string attribute in table.Attributes)
             {
                 ValidateConfiguredName(table.DisplayName + " column", attribute);
             }
+        }
+    }
 
+    public void Validate(SchemaRequirementSet requirements)
+    {
+        ValidateConfiguration(requirements);
+        var metadataByEntity = new Dictionary<string, EntityMetadata>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (TableRequirement table in requirements.Tables)
+        {
             var response = (RetrieveEntityResponse)service.Execute(new RetrieveEntityRequest
             {
                 LogicalName = table.Entity,
@@ -31,7 +37,13 @@ internal sealed class SchemaValidator(IOrganizationService service)
                 .Where(attribute => attribute.LogicalName is not null)
                 .ToDictionary(attribute => attribute.LogicalName!, StringComparer.OrdinalIgnoreCase);
 
-            foreach (string attributeName in table.Attributes.Append(table.SeedBatchAttribute))
+            IEnumerable<string> requiredAttributes = table.Attributes;
+            if (!string.IsNullOrWhiteSpace(table.SeedBatchAttribute))
+            {
+                requiredAttributes = requiredAttributes.Append(table.SeedBatchAttribute);
+            }
+
+            foreach (string attributeName in requiredAttributes)
             {
                 if (!availableAttributes.ContainsKey(attributeName))
                 {
@@ -40,8 +52,9 @@ internal sealed class SchemaValidator(IOrganizationService service)
                 }
             }
 
-            AttributeMetadata seedAttribute = availableAttributes[table.SeedBatchAttribute];
-            if (seedAttribute.AttributeType is not AttributeTypeCode.String and not AttributeTypeCode.Memo)
+            if (!string.IsNullOrWhiteSpace(table.SeedBatchAttribute) &&
+                availableAttributes[table.SeedBatchAttribute].AttributeType is not AttributeTypeCode.String and
+                not AttributeTypeCode.Memo)
             {
                 throw new InvalidOperationException(
                     $"Seed batch column '{table.Entity}.{table.SeedBatchAttribute}' must be a Text column.");
@@ -92,7 +105,7 @@ internal sealed class SchemaValidator(IOrganizationService service)
         if (string.IsNullOrWhiteSpace(value) || value.StartsWith("REPLACE_WITH_", StringComparison.Ordinal))
         {
             throw new InvalidOperationException(
-                $"{settingName} is not configured. Replace its placeholder in appsettings.Local.json.");
+                $"{settingName} is not configured. Add its logical name to appsettings.Local.json.");
         }
     }
 }
