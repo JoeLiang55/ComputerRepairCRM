@@ -1,8 +1,33 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# msbuild output directories
-/bin
-/obj
-
-# MSBuild Binary and Structured Log
+# .NET and MSBuild output
+**/bin/
+**/obj/
+**/TestResults/
+*.trx
+*.coverage
+*.coveragexml
 *.binlog
+*.csproj.user
+*.cdsproj.user
+*.pcfproj.user
+.vs/
+
+# Node and PCF output
+**/node_modules/
+**/out/
+**/generated/
+
+# Generated Power Platform packages
+*.zip
+
+# Local authentication and environment-specific secrets
+.env
+.env.*
+!.env.example
+authProfiles.json
+appsettings.Local.json
+*.publishsettings
+secrets.json
+
+# Common local files
+.DS_Store
+Thumbs.db
