@@ -5,11 +5,9 @@ Build `RepairShop.Plugins.slnx` in Release and register
 Registration Tool. Use Database storage and Sandbox isolation. Dataverse provides
 the Microsoft SDK assemblies; upload only `RepairShop.Plugins.dll`.
 
-> **Repair Due Date deployment prerequisite:** do not register
-> `CalculateRepairDueDatePlugin` from this build yet. `IncidentSchema.RepairDueDate`
-> intentionally contains an unresolved sentinel. After creating the column in
-> Power Apps, replace the sentinel with the exact generated logical name and
-> rebuild; the guard deliberately rejects execution until that is done.
+Repair Due Date is configured as the confirmed logical name
+`gsic_repairduedate`. The plug-in retains a guard against blank configuration and
+the original unresolved sentinel, but this build is ready to register.
 
 ## CalculateRepairDueDatePlugin
 

@@ -175,9 +175,8 @@ column and stores whole minutes.
 
 The repository contains no prior Priority reference, so the SLA plug-in uses the
 standard Case logical name `prioritycode` and Dataverse SDK default values High
-`1`, Normal `2`, and Low `3`. Repair Due Date remains intentionally unresolved:
-create the Case column, copy its generated logical name from Power Apps, replace
-the sentinel in `IncidentSchema.RepairDueDate`, and rebuild before deployment.
+`1`, Normal `2`, and Low `3`. Repair Due Date uses the confirmed logical name
+`gsic_repairduedate`.
 
 Live metadata confirms the BPF active-stage attribute (`activestageid`), Case
 lookup (`bpf_incidentid`), and five BPF stages: Received, Diagnosing, Waiting For

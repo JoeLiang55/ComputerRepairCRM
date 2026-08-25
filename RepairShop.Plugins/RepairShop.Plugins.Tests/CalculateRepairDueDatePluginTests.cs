@@ -19,7 +19,7 @@ namespace RepairShop.Plugins.Tests
             Assert.Equal(1, IncidentPriorityValues.High);
             Assert.Equal(2, IncidentPriorityValues.Normal);
             Assert.Equal(3, IncidentPriorityValues.Low);
-            Assert.Contains("UNRESOLVED", IncidentSchema.RepairDueDate);
+            Assert.Equal("gsic_repairduedate", IncidentSchema.RepairDueDate);
         }
 
         [Fact]
@@ -183,14 +183,35 @@ namespace RepairShop.Plugins.Tests
         }
 
         [Fact]
-        public void DefaultPlugin_RefusesUnresolvedDueDateSchema()
+        public void DefaultPlugin_UsesResolvedDueDateSchema()
         {
             Entity target = CreateTarget();
             target[IncidentSchema.DateReceived] = new DateTime(2026, 8, 24);
             target[IncidentSchema.Priority] = new OptionSetValue(IncidentPriorityValues.Normal);
 
+            Execute(target, "Create", null, new CalculateRepairDueDatePlugin());
+
+            Assert.Equal(
+                new DateTime(2026, 8, 31),
+                target.GetAttributeValue<DateTime>(IncidentSchema.RepairDueDate));
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   ")]
+        [InlineData(IncidentSchema.UnresolvedRepairDueDate)]
+        public void Plugin_RefusesMissingOrUnresolvedDueDateSchema(string dueDateLogicalName)
+        {
+            Entity target = CreateTarget();
+            target[IncidentSchema.DateReceived] = new DateTime(2026, 8, 24);
+            target[IncidentSchema.Priority] = new OptionSetValue(IncidentPriorityValues.Normal);
+            var plugin = new CalculateRepairDueDatePlugin(
+                dueDateLogicalName,
+                new RepairSlaCalculator());
+
             InvalidPluginExecutionException exception = Assert.Throws<InvalidPluginExecutionException>(
-                () => Execute(target, "Create", null, new CalculateRepairDueDatePlugin()));
+                () => Execute(target, "Create", null, plugin));
 
             Assert.Contains("logical name is unresolved", exception.Message);
         }

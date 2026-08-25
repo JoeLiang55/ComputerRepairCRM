@@ -21,10 +21,11 @@ namespace RepairShop.Plugins.Model
         // Choice values are defined in IncidentPriorityValues.
         internal const string Priority = "prioritycode";
 
-        // Replace this sentinel only after Power Apps has generated the actual
-        // logical name for the new Repair Due Date column. The plug-in refuses
-        // to execute with the sentinel, preventing deployment with a guessed prefix.
-        internal const string RepairDueDate = "__UNRESOLVED_REPAIR_DUE_DATE_LOGICAL_NAME__";
+        internal const string UnresolvedRepairDueDate =
+            "__UNRESOLVED_REPAIR_DUE_DATE_LOGICAL_NAME__";
+
+        // Confirmed logical name for the Repair Due Date column.
+        internal const string RepairDueDate = "gsic_repairduedate";
 
         // Dataverse Whole Number / Duration columns store whole minutes.
         internal const string RepairDuration = "gsic_repairduration";

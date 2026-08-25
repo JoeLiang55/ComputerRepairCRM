@@ -202,7 +202,7 @@ namespace RepairShop.Plugins.Plugins.Incident
             if (string.IsNullOrWhiteSpace(dueDateLogicalName) ||
                 string.Equals(
                     dueDateLogicalName,
-                    IncidentSchema.RepairDueDate,
+                    IncidentSchema.UnresolvedRepairDueDate,
                     StringComparison.Ordinal))
             {
                 throw new InvalidPluginExecutionException(
