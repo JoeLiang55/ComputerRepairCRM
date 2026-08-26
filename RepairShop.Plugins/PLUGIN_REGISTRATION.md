@@ -57,7 +57,7 @@ Create is traced and skipped. Explicitly clearing Date Received on Update clears
 Repair Due Date. A missing or unrecognized effective Priority does not produce a
 date; on Update, the output is cleared to avoid retaining a misleading SLA.
 
-The configured SLAs are Low = 7, Normal = 5, and High = 2 business days. Saturdays
+The configured SLAs are Low = 10, Normal = 5, and High = 2 business days. Saturdays
 and Sundays are skipped; holidays are not yet modeled. Time-of-day is preserved.
 
 ## PreventInvalidRepairStatusTransitionPlugin

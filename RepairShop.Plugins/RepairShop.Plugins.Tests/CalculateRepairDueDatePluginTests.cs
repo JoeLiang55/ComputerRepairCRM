@@ -77,7 +77,7 @@ namespace RepairShop.Plugins.Tests
             Execute(target, "Update", preImage);
 
             Assert.Equal(
-                new DateTime(2026, 9, 3, 11, 15, 0),
+                new DateTime(2026, 9, 8, 11, 15, 0),
                 target.GetAttributeValue<DateTime>(TestDueDate));
             Assert.Equal(2, target.Attributes.Count);
         }

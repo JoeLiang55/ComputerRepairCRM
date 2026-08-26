@@ -13,8 +13,8 @@ RepairShop.Plugins/
   PLUGIN_REGISTRATION.md
   RepairShop.Plugins/
     Model/                  Dataverse logical names and Choice values
-    Plugins/Incident/       the four IPlugin entry points
-    Services/               testable SLA, completion, transition, and stage logic
+    Plugins/                the Case and Repair Part IPlugin entry points
+    Services/               testable repair and inventory domain logic
     PluginBase.cs           shared context, tracing, and exception boundary
     RepairShop.Plugins.csproj
   RepairShop.Plugins.Tests/ focused xUnit tests with small SDK mocks
@@ -75,6 +75,18 @@ SLA input the sparse Target omitted.
 dependency on plug-in context or organization services. Its business-day loop is
 unit tested independently and its business-day predicate is isolated so a future
 Dataverse holiday/business-closure calendar can replace weekend-only behavior.
+
+`InventoryAllocationService` is the inventory domain layer. It has no
+organization-service dependency and calculates immutable stock-adjustment plans
+for Repair Part creates, updates, and deletes. It validates quantities and stored
+stock before returning a plan and snapshots Inventory Unit Cost into Repair Part
+Unit Cost and Total Cost values.
+
+`MaintainInventoryForRepairPartPlugin` is the Dataverse adapter for that service.
+It runs in PreOperation for Repair Part Create, Update, and Delete, protects parts
+belonging to terminal repairs when the Case lookup is available, and sends sparse
+Inventory updates with optimistic concurrency. Low stock is traced only; this
+implementation does not create notifications or reorder records.
 
 This rule is enforced in a server-side plug-in instead of relying only on a
 Business Rule or form JavaScript. The server is the common enforcement boundary

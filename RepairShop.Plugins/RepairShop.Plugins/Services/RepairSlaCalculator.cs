@@ -21,7 +21,7 @@ namespace RepairShop.Plugins.Services
             switch (priority)
             {
                 case RepairPriority.Low:
-                    return 7;
+                    return 10;
                 case RepairPriority.Normal:
                     return 5;
                 case RepairPriority.High:
