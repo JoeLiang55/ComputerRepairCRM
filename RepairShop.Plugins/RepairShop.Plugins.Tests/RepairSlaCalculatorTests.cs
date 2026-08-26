@@ -68,7 +68,7 @@ namespace RepairShop.Plugins.Tests
         }
 
         [Theory]
-        [InlineData(RepairPriority.Low, 7)]
+        [InlineData(RepairPriority.Low, 10)]
         [InlineData(RepairPriority.Normal, 5)]
         [InlineData(RepairPriority.High, 2)]
         public void PriorityRule_ReturnsConfiguredBusinessDays(

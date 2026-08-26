@@ -24,8 +24,13 @@ namespace RepairShop.Plugins.Tests
 
     internal sealed class TestTracingService : ITracingService
     {
+        internal IList<string> Messages { get; } = new List<string>();
+
         public void Trace(string format, params object[] args)
         {
+            Messages.Add(args == null || args.Length == 0
+                ? format
+                : string.Format(format, args));
         }
     }
 
@@ -35,7 +40,7 @@ namespace RepairShop.Plugins.Tests
             string primaryEntityName,
             int stage,
             Guid primaryEntityId,
-            Entity target,
+            object target,
             Entity preImage = null,
             Entity postImage = null,
             string messageName = "Update")
