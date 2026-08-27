@@ -1,4 +1,4 @@
-<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26073.163" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.26073.00163">
+<ImportExportXml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" OrganizationVersion="9.2.26073.163" OrganizationSchemaType="Full" CRMServerServiceabilityVersion="9.2.26074.00160">
   <Entities>
     <Entity>
       <Name LocalizedName="Contact" OriginalName="">Contact</Name>
@@ -28561,6 +28561,1418 @@
     </InteractionCentricDashboard>
   </InteractionCentricDashboards>
   <CustomControls />
+  <SolutionPluginAssemblies>
+    <PluginAssembly FullName="RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginAssemblyId="dc9018bb-f209-4aad-95d0-73efb5dfd592" CustomizationLevel="1">
+      <IsolationMode>2</IsolationMode>
+      <SourceType>0</SourceType>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <FileName>/PluginAssemblies/RepairShopPlugins-DC9018BB-F209-4AAD-95D0-73EFB5DFD592/RepairShopPlugins.dll</FileName>
+      <PluginTypes>
+        <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="b3695662-b744-4898-8935-e91bb66588b2" Name="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin">
+          <FriendlyName>8cdfeaf0-1cfc-4ad5-96ca-c4649039334f</FriendlyName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="cb4005e7-549f-41ae-b7a3-400e4be15bf2" Name="RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin">
+          <FriendlyName>bb99518c-3546-4317-b6e6-1ef2c95e7fa6</FriendlyName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="8a80b2fd-c56a-464f-bed3-ce67332252d4" Name="RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin">
+          <FriendlyName>acb4a6de-e20b-4922-819c-1489c9aac159</FriendlyName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="1e4d8337-4f20-4d85-b9de-75eceb3bef01" Name="RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin">
+          <FriendlyName>4a794437-b0bc-4db7-a6a7-9c071fb8aa13</FriendlyName>
+        </PluginType>
+        <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="adaa612e-3bd8-49f7-9677-11d83478a1f5" Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin">
+          <FriendlyName>dff7a10d-c6fc-49f8-8bae-4f1157c778ca</FriendlyName>
+        </PluginType>
+      </PluginTypes>
+    </PluginAssembly>
+  </SolutionPluginAssemblies>
+  <SdkMessageProcessingSteps>
+    <SdkMessageProcessingStep Name=" (Deprecated) IoT - Provision IoT Suggestions ML Model" SdkMessageProcessingStepId="{84da5858-adfa-e911-a81e-000d3a0603ac}" unmodified="1">
+      <SdkMessageId>9f78918b-acfa-e911-a81e-000d3a0603ac</SdkMessageId>
+      <PluginTypeName>Microsoft.Crm.Iot.ProvisionIoTSuggestionsMLModel, Microsoft.Crm.Iot, Version=1.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>2cb04360-24bc-468f-88d7-3953c9276a9f</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="(Deprecated) IoT - Provision IoT Suggestions ML Model Internal" SdkMessageProcessingStepId="{4e9499c1-3dfc-e911-a81e-000d3a0603ac}" unmodified="1">
+      <SdkMessageId>ce7716bf-3cfc-e911-a81e-000d3a0603ac</SdkMessageId>
+      <PluginTypeName>Microsoft.Crm.Iot.Configuration.ProvisionIoTSuggestionsMLModelInternal, Microsoft.Crm.Iot.Configuration, Version=1.7.15.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>6796bf7d-bf97-45a9-b8f8-66bafc112a93</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="AIPluginTitlePlugin.ValidateAIPluginTitle: Create of aiplugintitle" SdkMessageProcessingStepId="{6b409f16-5cda-ee11-904a-002248082f8b}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dataverse.AIPlatformExtensions.Plugins.ValidateAIPluginTitle, Microsoft.Dataverse.AIPlatformExtensions.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c952d3ab-d84c-48d7-bf4f-9be060194fda</PluginTypeId>
+      <PrimaryEntity>aiplugintitle</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="AIPluginTitlePlugin.ValidateAIPluginTitle: Delete of aiplugintitle" SdkMessageProcessingStepId="{8ddf7725-5cda-ee11-904a-002248082f8b}" unmodified="1">
+      <SdkMessageId>a1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dataverse.AIPlatformExtensions.Plugins.ValidateAIPluginTitle, Microsoft.Dataverse.AIPlatformExtensions.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c952d3ab-d84c-48d7-bf4f-9be060194fda</PluginTypeId>
+      <PrimaryEntity>aiplugintitle</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="AIPluginTitlePlugin.ValidateAIPluginTitle: Update of aiplugintitle" SdkMessageProcessingStepId="{a7eeec2e-5cda-ee11-904a-002248082f8b}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dataverse.AIPlatformExtensions.Plugins.ValidateAIPluginTitle, Microsoft.Dataverse.AIPlatformExtensions.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c952d3ab-d84c-48d7-bf4f-9be060194fda</PluginTypeId>
+      <PrimaryEntity>aiplugintitle</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.AddToQueue: AddToQueue" SdkMessageProcessingStepId="{44d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>364af1c9-8436-4bf6-8952-82615b072380</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.AddToQueue, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>abd9e1fd-bb72-4b91-a487-085d1aec3666</PluginTypeId>
+      <PrimaryEntity>queueitem</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;AddToQueue.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;incident&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.AnnotationUpdate: Update of wall saved query (No-Op)" SdkMessageProcessingStepId="{11e6b9c2-e297-e011-a61c-00155db22186}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.AnnotationUpdate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>12242d80-1ec7-4172-8ade-b34276db7e6d</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedquery</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.AutoCreatePostConfigRows: RetrieveMultiple of msdyn_postruleconfig" SdkMessageProcessingStepId="{9658a99c-2c1d-e111-9bff-00155db19b12}" unmodified="1">
+      <SdkMessageId>03bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.AutoCreatePostConfigRows, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>971136bb-3e34-4f81-b9c9-b8eb64b5a5bc</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseAssign: assign of case" SdkMessageProcessingStepId="{b1063c32-759e-f111-b8db-000d3a3be75d}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseAssign, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8b2e4b7f-91af-4a2c-8468-a6075e0ae714</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;CaseAssign.Post&lt;/PostTemplateId&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseClose: Close of case for account" SdkMessageProcessingStepId="{3bd8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseClose, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>39a36069-6f42-49bc-a5cf-45fce0acf098</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.CaseClose.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>statecode</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{3dd8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>customerid,modifiedby,ownerid,statecode,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseClose: Close of case for contact" SdkMessageProcessingStepId="{41d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseClose, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>39a36069-6f42-49bc-a5cf-45fce0acf098</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.CaseClose.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>statecode</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{42d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>customerid,modifiedby,ownerid,statecode,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseCreate: Create Post for Parent Child Association" SdkMessageProcessingStepId="{4bd8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d204f078-6aa5-4458-983e-44096901df67</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Case.CaseParentChild.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>parentcaseid</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{4cd8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>modifiedby,ownerid,parentcaseid,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseCreate: Create of case for account" SdkMessageProcessingStepId="{33d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d204f078-6aa5-4458-983e-44096901df67</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.CaseCreate.Post&lt;/PostTemplateId&gt;&lt;PostTemplateId2&gt;Account.ChildCaseCreate.Post&lt;/PostTemplateId2&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{36d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby,customerid,ownerid,parentcaseid,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseCreate: Create of case for contact" SdkMessageProcessingStepId="{37d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d204f078-6aa5-4458-983e-44096901df67</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.CaseCreate.Post&lt;/PostTemplateId&gt;&lt;PostTemplateId2&gt;Contact.ChildCaseCreate.Post&lt;/PostTemplateId2&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{38d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby,customerid,ownerid,parentcaseid,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseCreate: Merge of incident" SdkMessageProcessingStepId="{45d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>dbbdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d204f078-6aa5-4458-983e-44096901df67</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Case.CaseMerge.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;incident&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{46d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>modifiedby,ownerid,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.CaseCreate: Reactivate of case" SdkMessageProcessingStepId="{47d8b8ba-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.CaseCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d204f078-6aa5-4458-983e-44096901df67</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Case.CaseReactivate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>statecode</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{49d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>customerid,modifiedby,modifiedon,ownerid,statecode,title</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>EntityMoniker</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+        <SdkMessageProcessingStepImage Name="PreBusinessEntity">
+          <SdkMessageProcessingStepImageId>{48d8b8ba-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>modifiedby,title,statecode,statuscode</Attributes>
+          <EntityAlias>PreBusinessEntity</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>EntityMoniker</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfigurator: Create of msdyn_postconfig in Stage 40" SdkMessageProcessingStepId="{59a4db99-e371-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfigurator, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>36b6a337-9041-48ac-8c21-948daa8cf517</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfigurator: SetStateDynamicEntity of msdyn_postconfig" SdkMessageProcessingStepId="{131b18f5-e371-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfigurator, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>36b6a337-9041-48ac-8c21-948daa8cf517</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfiguratorForViews: Create of msdyn_postconfig in Stage 20" SdkMessageProcessingStepId="{f29c358c-23c2-e011-a244-00155d8a2749}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfiguratorForViews, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>7984d2af-74a1-48f3-b4c8-9c5cfde49c5a</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfiguratorForViews: Delete of msdyn_postconfig" SdkMessageProcessingStepId="{a9db8627-d47c-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>a1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfiguratorForViews, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>7984d2af-74a1-48f3-b4c8-9c5cfde49c5a</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfiguratorForViews: SetStateDynamicEntity of msdyn_postconfig" SdkMessageProcessingStepId="{a1b7fa19-79c5-e011-8640-00155d883903}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfiguratorForViews, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>7984d2af-74a1-48f3-b4c8-9c5cfde49c5a</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.EntityConfiguratorForViews: Update of msdyn_postconfig" SdkMessageProcessingStepId="{f3df897a-79c5-e011-8640-00155d883903}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.EntityConfiguratorForViews, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>7984d2af-74a1-48f3-b4c8-9c5cfde49c5a</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.FollowingRecordsCount: RetrieveMultiple of postfollow" SdkMessageProcessingStepId="{85078a57-2d92-e011-b85e-00155d8a2749}" unmodified="1">
+      <SdkMessageId>03bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.FollowingRecordsCount, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f6bb30ce-51c0-4b4f-a6e4-1b3502c3c9f1</PluginTypeId>
+      <PrimaryEntity>postfollow</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.KnowledgeArticleCreate: Create of knowledge article" SdkMessageProcessingStepId="{3842b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.KnowledgeArticleCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>ddbd0915-eb7c-477a-9cce-ed940e78c570</PluginTypeId>
+      <PrimaryEntity>knowledgearticle</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;KnowledgeArticleCreate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;knowledgearticle&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{3a42b9b4-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby,title,isrootarticle</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.KnowledgeArticleTranslation: Create of translated knowledge article" SdkMessageProcessingStepId="{3d42b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>11dd0a57-478f-4441-8d13-c759f2999062</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.KnowledgeArticleTranslation, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f702e7fb-3894-4109-9cff-ef6af2519951</PluginTypeId>
+      <PrimaryEntity>knowledgearticle</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;KnowledgeArticleTranslation.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;knowledgearticle&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.KnowledgeArticleUpdate: update of knowledge article" SdkMessageProcessingStepId="{4942b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.KnowledgeArticleUpdate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>a58dde1a-39df-4d9f-b306-45f86d831849</PluginTypeId>
+      <PrimaryEntity>knowledgearticle</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;KnowledgeArticleUpdate.Post&lt;/PostTemplateId&gt;&lt;PostTemplateId2&gt;KnowledgeArticleSetState.Draft.Post&lt;/PostTemplateId2&gt;&lt;PostTemplateId3&gt;KnowledgeArticleSetState.Approved.Post&lt;/PostTemplateId3&gt;&lt;PostTemplateId4&gt;KnowledgeArticleSetState.Scheduled.Post&lt;/PostTemplateId4&gt;&lt;PostTemplateId5&gt;KnowledgeArticleSetState.Published.Post&lt;/PostTemplateId5&gt;&lt;PostTemplateId6&gt;KnowledgeArticleSetState.Expired.Post&lt;/PostTemplateId6&gt;&lt;PostTemplateId7&gt;KnowledgeArticleSetState.Archived.Post&lt;/PostTemplateId7&gt;&lt;PostTemplateId8&gt;KnowledgeArticleSetState.Trashed.Post&lt;/PostTemplateId8&gt;&lt;PostEntity&gt;knowledgearticle&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PreBusinessEntity">
+          <SdkMessageProcessingStepImageId>{4c42b9b4-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>modifiedby,title,statecode,statuscode</Attributes>
+          <EntityAlias>PreBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.KnowledgeArticleVersion: Create of version knowledge article" SdkMessageProcessingStepId="{4442b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>86b2d80e-f10c-46e6-98bd-ebabe4a39ec0</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.KnowledgeArticleVersion, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c7ba89a4-519e-45fe-b57d-e0eb25fa6540</PluginTypeId>
+      <PrimaryEntity>knowledgearticle</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;KnowledgeArticleVersion.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;knowledgearticle&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.LeadCreate: Create of lead" SdkMessageProcessingStepId="{c342b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.LeadCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>fcb91511-1c9d-40b0-9e3d-b93dc70ab560</PluginTypeId>
+      <PrimaryEntity>lead</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;LeadCreate.Post&lt;/PostTemplateId&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{c542b9b4-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby,fullname,ownerid</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.LeadQualify: QualifyLead of lead" SdkMessageProcessingStepId="{c942b9b4-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>644c3365-b36c-431e-b76b-5c3e48adee55</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.LeadQualify, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>46f7c27b-8f1c-4041-8f45-f3c4f31fdcbd</PluginTypeId>
+      <PrimaryEntity>lead</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;LeadQualify.Yes.0.Post&lt;/PostTemplateId&gt;&lt;PostTemplateId2&gt;LeadQualify.Yes.1.Post&lt;/PostTemplateId2&gt;&lt;PostTemplateId3&gt;LeadQualify.Yes.2.Post&lt;/PostTemplateId3&gt;&lt;PostTemplateId4&gt;LeadQualify.Yes.3.Post&lt;/PostTemplateId4&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCompetitors: Associate of  any Entity" SdkMessageProcessingStepId="{43bceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>16e7c888-3b24-448b-b7da-ebfe9b681762</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCompetitors, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>132be8df-0353-4bb3-a11f-a2828b2c1f44</PluginTypeId>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.Opportunity.Competitors.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCompetitors: Associate of  any Entity" SdkMessageProcessingStepId="{65bceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>16e7c888-3b24-448b-b7da-ebfe9b681762</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCompetitors, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>132be8df-0353-4bb3-a11f-a2828b2c1f44</PluginTypeId>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.Opportunity.Competitors.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCreate: Create of account" SdkMessageProcessingStepId="{3e25aea8-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>363f25cd-2f77-4dc8-846b-68af9563c9f7</PluginTypeId>
+      <PrimaryEntity>account</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.Create.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{3f25aea8-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCreate: Create of competitor" SdkMessageProcessingStepId="{bc43f2c0-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>363f25cd-2f77-4dc8-846b-68af9563c9f7</PluginTypeId>
+      <PrimaryEntity>competitor</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Competitor.Create.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{bd43f2c0-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCreate: Create of contact" SdkMessageProcessingStepId="{1c5abeae-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>363f25cd-2f77-4dc8-846b-68af9563c9f7</PluginTypeId>
+      <PrimaryEntity>contact</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.Create.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{1e5abeae-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>createdby</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCreate: Create of opportunity for account" SdkMessageProcessingStepId="{7b46f2c0-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>363f25cd-2f77-4dc8-846b-68af9563c9f7</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.OpportunityCreate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{8346f2c0-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>accountid,contactid,createdby,name,ownerid</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityCreate: Create of opportunity for contact" SdkMessageProcessingStepId="{9146f2c0-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>363f25cd-2f77-4dc8-846b-68af9563c9f7</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.OpportunityCreate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{9746f2c0-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>accountid,contactid,createdby,name,ownerid</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Id</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityUpdate: Update of opportunity for ProbabilityUpdate" SdkMessageProcessingStepId="{a546f2c0-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityUpdate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>25c1d79b-2f9a-4d88-ae01-23f82ea50ea0</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.Opportunity.ProbabilityUpdate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>closeprobability</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{ac46f2c0-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>accountid,closeprobability,contactid,name,ownerid,modifiedby</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>2</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityUpdate: Update of opportunity for ProbabilityUpdate" SdkMessageProcessingStepId="{b946f2c0-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityUpdate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>25c1d79b-2f9a-4d88-ae01-23f82ea50ea0</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.Opportunity.ProbabilityUpdate.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes>closeprobability</FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostBusinessEntity">
+          <SdkMessageProcessingStepImageId>{34bceac6-be72-f111-ab0e-70a8a5aecb3f}</SdkMessageProcessingStepImageId>
+          <Attributes>accountid,closeprobability,contactid,name,ownerid,modifiedby</Attributes>
+          <EntityAlias>PostBusinessEntity</EntityAlias>
+          <ImageType>2</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityWinLost: Lose of opportunity of account" SdkMessageProcessingStepId="{bebceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>d1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityWinLost, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f8f3f85d-dffc-4cae-ad18-e499cac97160</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.OpportunityLost.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityWinLost: Lose of opportunity of contact" SdkMessageProcessingStepId="{cdbceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>d1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityWinLost, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f8f3f85d-dffc-4cae-ad18-e499cac97160</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.OpportunityLost.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;false&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityWinLost: Win of opportunity of account" SdkMessageProcessingStepId="{8dbceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>27bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityWinLost, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f8f3f85d-dffc-4cae-ad18-e499cac97160</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Account.OpportunityWin.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;account&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.OpportunityWinLost: Win of opportunity of contact" SdkMessageProcessingStepId="{aabceac6-be72-f111-ab0e-70a8a5aecb3f}">
+      <SdkMessageId>27bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.OpportunityWinLost, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f8f3f85d-dffc-4cae-ad18-e499cac97160</PluginTypeId>
+      <PrimaryEntity>opportunity</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Configuration>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;ConfigurationParameters xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;&lt;LocalizationWebResourceName&gt;msdyn_/Data/PluginErrorStrings.resx&lt;/LocalizationWebResourceName&gt;&lt;PostTemplateId&gt;Contact.OpportunityWin.Post&lt;/PostTemplateId&gt;&lt;PostEntity&gt;contact&lt;/PostEntity&gt;&lt;PostToYammer&gt;true&lt;/PostToYammer&gt;&lt;/ConfigurationParameters&gt;</Configuration>
+      <FilteringAttributes></FilteringAttributes>
+      <ImpersonatingUserIdName>SYSTEM</ImpersonatingUserIdName>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.PreConfigurationValidator: Create of msdyn_postconfig in Stage 10" SdkMessageProcessingStepId="{92d7e361-e471-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.PreConfigurationValidator, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>01019da2-b97b-4f02-a9be-a2d791e67622</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.PreConfigurationValidator: Create of msdyn_postconfig with Post Stage in Stage 40 and Rank 2" SdkMessageProcessingStepId="{2f02bde2-9328-e111-80e6-00155d8a2749}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.PreConfigurationValidator, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c53fa570-0cc4-4ee8-9d8c-647f409f19cc</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.PreConfigurationValidator: SetStateDynamicEntity of msdyn_postconfig" SdkMessageProcessingStepId="{7736985c-556b-4433-833d-2cad6a7bc303}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.PreConfigurationValidator, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c53fa570-0cc4-4ee8-9d8c-647f409f19cc</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.PreConfigurationValidator: Update of msdyn_postconfig" SdkMessageProcessingStepId="{d616a067-e571-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.PreConfigurationValidator, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>01019da2-b97b-4f02-a9be-a2d791e67622</PluginTypeId>
+      <PrimaryEntity>msdyn_postconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.PreValidationFollow: Create of postfollow" SdkMessageProcessingStepId="{0abfa17a-e280-e011-bba4-00155da91e01}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.PreValidationFollow, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>4700ea7b-e8fb-4246-a80c-4ef483313066</PluginTypeId>
+      <PrimaryEntity>postfollow</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.RuleConfiguration: Create of msdyn_postruleconfig" SdkMessageProcessingStepId="{4478f928-b976-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.RuleConfiguration, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>9c724359-a610-4eef-b12a-5fcf426315f1</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.RuleConfiguration: Delete of msdyn_postruleconfig" SdkMessageProcessingStepId="{b643e1a3-bf76-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>a1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.RuleConfiguration, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>9c724359-a610-4eef-b12a-5fcf426315f1</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.RuleConfiguration: SetStateDynamicEntity of msdyn_postruleconfig" SdkMessageProcessingStepId="{12f04a77-bf76-e011-93e7-00155d8a2747}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.RuleConfiguration, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>9c724359-a610-4eef-b12a-5fcf426315f1</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.RuleConfiguration: Update of msdyn_postruleconfig" SdkMessageProcessingStepId="{c57c4211-4635-e211-ad0f-00155db6575d}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.RuleConfiguration, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>9c724359-a610-4eef-b12a-5fcf426315f1</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.RuleDisableOnCreate: Create of msdyn_postruleconfig" SdkMessageProcessingStepId="{d4563902-06ca-e011-b0de-00155db23261}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.RuleDisableOnCreate, ActivityFeeds.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8477f8a4-7a50-43e6-b4df-5f175e5a76e7</PluginTypeId>
+      <PrimaryEntity>msdyn_postruleconfig</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQuery: PreCreate of WallSavedQuery" SdkMessageProcessingStepId="{630c977b-51d9-437d-b246-3def294fae80}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQuery, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0de64d66-cfd5-45bb-b6d8-116720982e25</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedquery</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQuery: RetrieveMultiple of WallSavedQuery" SdkMessageProcessingStepId="{3c0a4ac3-f6a9-455e-a4bf-6719a231403b}" unmodified="1">
+      <SdkMessageId>03bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQuery, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0de64d66-cfd5-45bb-b6d8-116720982e25</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedquery</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQuery: SetStateDynamicEntity of msdyn_wallsavedquery" SdkMessageProcessingStepId="{9fbb3cc7-be5e-4540-8968-c490452ce37b}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQuery, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0de64d66-cfd5-45bb-b6d8-116720982e25</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedquery</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQuery: SetStateDynamicEntity of msdyn_wallsavedquery" SdkMessageProcessingStepId="{b79c5cdb-6494-4e94-b164-420ea8a0fbe4}" unmodified="1">
+      <SdkMessageId>1dbebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQuery, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0de64d66-cfd5-45bb-b6d8-116720982e25</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedquery</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQueryUserSettings: RetrieveMultiple of WallSavedQueryUserSettings" SdkMessageProcessingStepId="{c768c67a-425c-499b-a3d8-89928d0dd2b5}" unmodified="1">
+      <SdkMessageId>03bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQueryUserSettings, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0006908c-8d31-4d1a-a605-99bc21299407</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedqueryusersettings</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQueryUserSettings: RetrieveMultiple of WallSavedQueryUserSettings" SdkMessageProcessingStepId="{e4573dc9-3b33-4c9d-bed3-8c4fd8507889}" unmodified="1">
+      <SdkMessageId>03bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQueryUserSettings, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0006908c-8d31-4d1a-a605-99bc21299407</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedqueryusersettings</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ActivityFeeds.Plugins.WallSavedQueryUserSettings: Update of WallSavedQueryUserSettings" SdkMessageProcessingStepId="{aff24880-818c-43d3-9463-66e54eda441c}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>ActivityFeeds.Plugins.WallSavedQueryUserSettings, ActivityFeeds.Filtering.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0006908c-8d31-4d1a-a605-99bc21299407</PluginTypeId>
+      <PrimaryEntity>msdyn_wallsavedqueryusersettings</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Analytics GetAnalyticsReportToken" SdkMessageProcessingStepId="{668ef101-0cca-e911-a846-000d3a59f50b}" unmodified="1">
+      <SdkMessageId>ae56625e-77c4-e911-a81c-000d3a6cf0be</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Analytics.GetAnalyticsReportToken, Microsoft.Dynamics.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>48ce3efe-978d-4560-a5d7-6bf52f711dd1</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Analytics GetReportDetail" SdkMessageProcessingStepId="{7817fc96-f110-4641-b864-2f4175c40c53}" unmodified="1">
+      <SdkMessageId>ae618a04-b7c9-4932-8928-1b7347b6d7e3</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Analytics.GetReportDetail, Microsoft.Dynamics.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>823a13ff-7b8a-4e6a-a84f-e518b7f0dfc6</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Analytics msdyn_AnalyticsSaveDataInConfigStore" SdkMessageProcessingStepId="{e8971880-ca3c-4064-986e-50e4e5340319}" unmodified="1">
+      <SdkMessageId>296fcda0-c346-469b-a894-d9219cf31caf</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Analytics.SaveDataInConfigStore, Microsoft.Dynamics.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>c5bdd562-7ea4-4283-b22b-f6a29a51f7fa</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Async Post Operation Create of Sales Agent Run" SdkMessageProcessingStepId="{c9d8bdba-e37a-47a7-97a6-982aaa205386}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.SalesAgentsCommon.Plugins.AgentPlugins.PostOperationSalesAgentRunCreateAsyncSkipSAR, Microsoft.Dynamics.SalesAgentsCommon.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>b43dd979-a507-42bf-b7db-8078ac751ecd</PluginTypeId>
+      <PrimaryEntity>msdyn_salesagentrun</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CCS - Post Create of incident" SdkMessageProcessingStepId="{282618c0-82e4-487c-b401-af92dd598089}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.CCS.Plugins.PostCaseCreate, Microsoft.Dynamics.CCS.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>acbd1493-1c1e-4267-af6f-7823c2b1cd32</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CCS - Post Create of msdyn_iotdevice" SdkMessageProcessingStepId="{883506b9-2a17-487b-b1d9-c17b9fd3ffd3}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.CCS.Plugins.PostIoTDeviceCreate, Microsoft.Dynamics.CCS.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>64c7f5ac-b85b-49b7-9cf0-9adb80d57aa1</PluginTypeId>
+      <PrimaryEntity>msdyn_iotdevice</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CCS - Post Create of msdyn_iotdevicecommand" SdkMessageProcessingStepId="{33c27209-cd00-ea11-a81c-000d3ac2fa2f}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.CCS.Plugins.PostIoTDeviceCommandCreate, Microsoft.Dynamics.CCS.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8ad55806-2a47-479d-bbd4-211190a1ca4b</PluginTypeId>
+      <PrimaryEntity>msdyn_iotdevicecommand</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CCS - Post Update of incident" SdkMessageProcessingStepId="{a1dee874-c517-4706-8b52-87588e6d83ac}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.CCS.Plugins.PostCaseUpdate, Microsoft.Dynamics.CCS.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>b2656f49-2f7e-4219-ab0f-b07432e57b9b</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CCS - Pull Case Aggregation For Device" SdkMessageProcessingStepId="{702a2d7b-d8bf-46a9-ac0d-a53d6dc2d561}" unmodified="1">
+      <SdkMessageId>a81cc287-eac9-449f-ba11-499a5227e5e3</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.CCS.Plugins.GetCaseAggregation, Microsoft.Dynamics.CCS.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>3138c523-5e6f-439d-874f-8fd49ebdb52a</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CRM.Solutions.ConversationIntelligence.Plugins.SCIConversationCorrelation.SCIConversationCorrelationPlugin: Create of appointment" SdkMessageProcessingStepId="{f06d9cf4-520b-ee11-8f6e-6045bdd2f07c}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>CRM.Solutions.ConversationIntelligence.Plugins.SCIConversationCorrelation.SCIConversationCorrelationPlugin, CRM.Solutions.CI.Plugins.SCIConversationCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>b283f38d-20b6-4b77-ad4a-09d17ed9e25c</PluginTypeId>
+      <PrimaryEntity>appointment</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CRM.Solutions.ConversationIntelligence.Plugins.SCIConversationCorrelation.SCIConversationCorrelationPlugin: Create of msdyn_sciconversation" SdkMessageProcessingStepId="{38f6db9c-8f15-ee11-8f6d-6045bdd2f07c}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>CRM.Solutions.ConversationIntelligence.Plugins.SCIConversationCorrelation.SCIConversationCorrelationPlugin, CRM.Solutions.CI.Plugins.SCIConversationCorrelation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>b283f38d-20b6-4b77-ad4a-09d17ed9e25c</PluginTypeId>
+      <PrimaryEntity>msdyn_sciconversation</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ClassificationOnEntityEvent - Plugin to classify segment for account on create event." SdkMessageProcessingStepId="{0915144d-637c-f111-ab0e-70a8a5b1620a}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Segment.Plugins.ClassificationOnEntityEvent, Microsoft.Dynamics.Segment.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8b0f08ee-1815-4548-897b-42f7dcdc982b</PluginTypeId>
+      <PrimaryEntity>account</PrimaryEntity>
+      <AsyncAutoDelete>1</AsyncAutoDelete>
+      <Description>ClassificationOnEntityEvent - Plugin to classify segment for account on create event.</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>1</Mode>
+      <Rank>2147483647</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ClassificationOnEntityEvent - Plugin to classify segment for account on update event." SdkMessageProcessingStepId="{2015144d-637c-f111-ab0e-70a8a5b1620a}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Segment.Plugins.ClassificationOnEntityEvent, Microsoft.Dynamics.Segment.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8b0f08ee-1815-4548-897b-42f7dcdc982b</PluginTypeId>
+      <PrimaryEntity>account</PrimaryEntity>
+      <AsyncAutoDelete>1</AsyncAutoDelete>
+      <Description>ClassificationOnEntityEvent - Plugin to classify segment for account on update event.</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>1</Mode>
+      <Rank>2147483647</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ClassificationOnEntityEvent - Plugin to classify segment for contact on create event." SdkMessageProcessingStepId="{5b67da5b-637c-f111-ab0e-70a8a5b1620a}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Segment.Plugins.ClassificationOnEntityEvent, Microsoft.Dynamics.Segment.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8b0f08ee-1815-4548-897b-42f7dcdc982b</PluginTypeId>
+      <PrimaryEntity>contact</PrimaryEntity>
+      <AsyncAutoDelete>1</AsyncAutoDelete>
+      <Description>ClassificationOnEntityEvent - Plugin to classify segment for contact on create event.</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>1</Mode>
+      <Rank>2147483647</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ClassificationOnEntityEvent - Plugin to classify segment for contact on update event." SdkMessageProcessingStepId="{5d67da5b-637c-f111-ab0e-70a8a5b1620a}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.Segment.Plugins.ClassificationOnEntityEvent, Microsoft.Dynamics.Segment.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>8b0f08ee-1815-4548-897b-42f7dcdc982b</PluginTypeId>
+      <PrimaryEntity>contact</PrimaryEntity>
+      <AsyncAutoDelete>1</AsyncAutoDelete>
+      <Description>ClassificationOnEntityEvent - Plugin to classify segment for contact on update event.</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>1</Mode>
+      <Rank>2147483647</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Clone Attachments Plugin" SdkMessageProcessingStepId="{725e07c6-8e0f-4f5a-9ed7-8ae3a6ebf0f5}" unmodified="1">
+      <SdkMessageId>38194192-2ba9-4d43-9231-124c9ac61d8b</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.KnowledgeArticleFeatures.Plugins.CloneAttachmentsPlugin, Microsoft.Dynamics.KnowledgeArticleFeatures.Plugins, Version=0.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>80ab565c-a697-48f1-8ca3-bdb07da8366b</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Create of msdyn_aiagentstatus for email" SdkMessageProcessingStepId="{a1b2c3d4-e5f6-7890-1234-567890abcdef}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.EmailResolutionAgent.SandboxPlugins.Plugins.HandleEmailThreadAiAgentStatusUpdate, Microsoft.Dynamics.EmailResolutionAgent.SandboxPlugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f1e2d3c4-b5a6-4c7d-8e9f-0a1b2c3d4e5f</PluginTypeId>
+      <PrimaryEntity>msdyn_aiagentstatus</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CreateVariableDefinition" SdkMessageProcessingStepId="{fcdb8641-29e0-4e05-83dc-fae21a7c7905}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.EnvironmentVariables.Plugins.CreateVariableDefinition, Microsoft.Dynamics.EnvironmentVariables.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>36d9fa93-a7d5-4eaa-9fb2-54ca68f73123</PluginTypeId>
+      <PrimaryEntity>environmentvariabledefinition</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CreateVariableValue" SdkMessageProcessingStepId="{5e068ed2-48ae-e911-819a-000d3af93155}" unmodified="1">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.EnvironmentVariables.Plugins.CreateVariableValue, Microsoft.Dynamics.EnvironmentVariables.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>53d5bf4d-4858-4c37-a239-0233ccd68620</PluginTypeId>
+      <PrimaryEntity>environmentvariablevalue</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CreateVariableValue" SdkMessageProcessingStepId="{ce844f4b-7474-420a-9d42-f30bfda82ddf}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.EnvironmentVariables.Plugins.UpdateVariableValue, Microsoft.Dynamics.EnvironmentVariables.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d1c89276-2c6f-4ba7-b249-1c363eee50a5</PluginTypeId>
+      <PrimaryEntity>environmentvariablevalue</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Custom action to invoke Omnichannel Outbound API" SdkMessageProcessingStepId="{aa261bae-3de6-489d-a51d-36c069c6115f}" unmodified="1">
+      <SdkMessageId>4c1646c7-508e-ea11-a81e-000d3a6e5da2</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelOutbound.Workflows.InvokeOutboundAPI, Microsoft.Dynamics.OmnichannelOutbound.Workflows, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>88cfe3f5-5ea6-4113-bfce-f323abb5e4d2</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CustomChannelConfigurationShouldHaveWorkStreamRule" SdkMessageProcessingStepId="{44ea3f8b-bf8e-4282-b254-74fe0f9d07de}" unmodified="1">
+      <SdkMessageId>8ba3bd76-80cc-4b5a-ab85-af613c67a7ee</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelSocialChannels.Plugins.OCValidation.CustomChannelConfigurationShouldHaveWorkStreamRulePlugin, Microsoft.Dynamics.OmnichannelSocialChannels.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f2ebbb14-6709-47c5-93c1-c9913f548921</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="CustomChannelSettingsShouldHaveAllRequiredFieldsRule" SdkMessageProcessingStepId="{fc182d2c-f2af-ea11-a812-000d3a33f499}" unmodified="1">
+      <SdkMessageId>76edabd3-af20-4417-adce-ba8099addf44</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelSocialChannels.Plugins.OCValidation.CustomChannelSettingsShouldHaveAllRequiredFieldsRulePlugin, Microsoft.Dynamics.OmnichannelSocialChannels.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>fb1af768-9332-4a31-aebc-95522bab7431</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="DeleteVariableValue" SdkMessageProcessingStepId="{a26f2f97-dc93-45a6-bfdc-fa20a04a9bca}" unmodified="1">
+      <SdkMessageId>a1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.EnvironmentVariables.Plugins.DeleteVariableValue, Microsoft.Dynamics.EnvironmentVariables.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>71caf594-fbbb-44ab-9adc-4c645b9d198e</PluginTypeId>
+      <PrimaryEntity>environmentvariablevalue</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Execute SI Request" SdkMessageProcessingStepId="{bb41a3e4-6505-ea11-a811-000d3a54419d}" unmodified="1">
+      <SdkMessageId>e03726ea-6105-ea11-a811-000d3a544234</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.GetValidLicenseInfo, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>08dffcd2-4650-4bfb-9b0c-5c87a25e4769</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Execute the Recurring Sales Operation" SdkMessageProcessingStepId="{17787d59-6fb3-4733-bec6-3e9ef9a4ca6e}" unmodified="1">
+      <SdkMessageId>ed485301-d21e-43ba-844a-9ac05eea943f</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.ExecuteRecurringSalesOperation, Microsoft.Dynamics.RICommon.V2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>e33fe9d5-a4c4-4351-a3b8-ad0412f8a495</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="ExecuteCosmosSqlQuery" SdkMessageProcessingStepId="{5be37ba1-e9ef-420a-80de-178f878d231c}" unmodified="1">
+      <SdkMessageId>3d2bd319-ffa1-419f-bb09-6dbee2ce362d</SdkMessageId>
+      <PluginTypeName>Microsoft.Crm.Extensibility.InternalOperationPlugin, Microsoft.Crm.ObjectModel, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>29efe3a5-047c-40a3-b89c-2787eff38eee</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="FacebookPageConfigurationShouldHaveWorkStreamRule" SdkMessageProcessingStepId="{8b146845-2dce-4c9c-b143-afc5e406b72a}" unmodified="1">
+      <SdkMessageId>0933a870-7490-4d8e-8977-037f47813c57</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelFacebook.Plugins.OCValidation.FacebookPageConfigurationShouldHaveWorkStreamRulePlugin, Microsoft.Dynamics.OmnichannelFacebook.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>db1795a9-ecee-4f62-9ca0-74196d7e61af</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="FacebookSettingsShouldHaveAllRequiredFieldsRule" SdkMessageProcessingStepId="{45fdccb8-9eb0-ea11-a812-000d3a35ea15}" unmodified="1">
+      <SdkMessageId>423855f3-9899-43b1-aacb-536965b75a4f</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelFacebook.Plugins.OCValidation.FacebookSettingsShouldHaveAllRequiredFieldsRulePlugin, Microsoft.Dynamics.OmnichannelFacebook.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>145801e7-a548-4ee5-b62a-e0b4767c2016</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Fetch SI License status from TPS for Paid and Trial license counts" SdkMessageProcessingStepId="{124869ad-c004-482e-a305-a4c769dcc2b4}" unmodified="1">
+      <SdkMessageId>e9a8ba78-8dc8-4232-a246-7dbaaee450c1</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.GetSILicenseStatus, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>33be4ef2-c2c2-4d11-b2f3-ad31cc9cac59</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Fetch SI Package install status from TPS" SdkMessageProcessingStepId="{4dcce277-9021-e811-8132-000d3a21c8d8}" unmodified="1">
+      <SdkMessageId>cb57a33d-8f21-e811-8132-000d3a21c8d8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.GetSIPackageStatus, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0910a07a-fde1-4cb3-b63f-51a99cab2ccf</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Fetch premium org status" SdkMessageProcessingStepId="{e58d8582-fd86-4fab-94c3-a6af3d1a5640}" unmodified="1">
+      <SdkMessageId>1b7a87c0-6a9d-445b-a19b-a8b590ca1090</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.GetPremiumOrgStatus, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>75b7504a-a87e-4bbe-93d8-d6c212de2eef</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Find Entity for polymorphic lookup" SdkMessageProcessingStepId="{5b4bbbe4-3707-4ea3-aca3-2cb835dc0550}" unmodified="1">
+      <SdkMessageId>2cea5886-4cd0-ea11-a81c-000d3abea085</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.SLAMigration.Plugins.ServiceLevelAgreement.FindEntityForPolymorphicLookup, Microsoft.Dynamics.SLAMigration.Plugins, Version=9.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>e0ec3c1a-6a02-46ba-af17-ecaa563da08f</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="GBMConfigurationShouldHaveWorkStreamRule" SdkMessageProcessingStepId="{fd855add-8d70-4209-b491-3236b54c9e3f}" unmodified="1">
+      <SdkMessageId>c062e80c-8906-4af7-a9d5-6da66b60d7d5</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelSocialChannels.Plugins.OCValidation.GBMConfigurationShouldHaveWorkStreamRulePlugin, Microsoft.Dynamics.OmnichannelSocialChannels.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>9a9c8207-df72-4a5e-967a-6f8aea4a5c7e</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="GBMSettingsShouldHaveAllRequiredFieldsRule" SdkMessageProcessingStepId="{0e26f5ec-269d-46ac-b704-865b12e66988}" unmodified="1">
+      <SdkMessageId>19838f87-660a-49d7-afa3-6f0627ebacf7</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.OmnichannelSocialChannels.Plugins.OCValidation.GBMSettingsShouldHaveAllRequiredFieldsRulePlugin, Microsoft.Dynamics.OmnichannelSocialChannels.Plugins, Version=9.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>eb437043-2d20-427d-8ce4-02e1928028d2</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="GDPROptOutPreValidationPlugin: Update of contact" SdkMessageProcessingStepId="{c6841515-99fa-e711-80f9-02155db4a7b4}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.GDPROptOutPreValidationPlugin, Microsoft.Dynamics.RICommon.V2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0a1add00-017c-4e44-b956-3490fc830f3b</PluginTypeId>
+      <PrimaryEntity>contact</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="GDPROptOutPreValidationPlugin: Update of lead" SdkMessageProcessingStepId="{79d4152a-99fa-e711-80f9-02155db4a7b4}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.GDPROptOutPreValidationPlugin, Microsoft.Dynamics.RICommon.V2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0a1add00-017c-4e44-b956-3490fc830f3b</PluginTypeId>
+      <PrimaryEntity>lead</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="GDPROptOutPreValidationPlugin: Update of systemuser" SdkMessageProcessingStepId="{37bda2d9-99fa-e711-80f9-02155db4a7b4}" unmodified="1">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.GDPROptOutPreValidationPlugin, Microsoft.Dynamics.RICommon.V2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>0a1add00-017c-4e44-b956-3490fc830f3b</PluginTypeId>
+      <PrimaryEntity>systemuser</PrimaryEntity>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Get ACI Mars connector status" SdkMessageProcessingStepId="{3ae73a66-53f1-e711-80f9-02155db4a7b4}" unmodified="1">
+      <SdkMessageId>6fce0225-6ef0-e711-80f9-02155db4a7b4</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.GetMarsConnectorStatus, Microsoft.Dynamics.RICommon.V2.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>f2e7b375-2d04-43cc-8fe9-7076921d9da5</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Get FCB Status" SdkMessageProcessingStepId="{4a05bd40-32a7-ea11-a812-000d3a8d88aa}" unmodified="1">
+      <SdkMessageId>22b35c90-19a7-ea11-a812-000d3a54419d</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.SIGetFCBStatus, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>7c351daa-787e-4b1d-8a19-251591c39ef3</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="Get RI provisioning status" SdkMessageProcessingStepId="{38d13c7f-53f1-e711-80f9-02155db4a7b4}" unmodified="1">
+      <SdkMessageId>019e27e4-6bf0-e711-80f9-02155db4a7b4</SdkMessageId>
+      <PluginTypeName>Microsoft.Dynamics.RICommon.SandboxPlugins.GetRIProvisioningStatus, Microsoft.Dynamics.RICommon.SandboxPlugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35</PluginTypeName>
+      <PluginTypeId>d71a0fb6-591a-4954-9c87-671d56e5e95a</PluginTypeId>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin: Create of incident" SdkMessageProcessingStepId="{f0f4cee8-15a0-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>b3695662-b744-4898-8935-e91bb66588b2</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin: Create of incident</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin: Update of incident" SdkMessageProcessingStepId="{de55901c-16a0-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>b3695662-b744-4898-8935-e91bb66588b2</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin: Update of incident</Description>
+      <FilteringAttributes>cr1a3_datereceived,prioritycode</FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PreImage">
+          <SdkMessageProcessingStepImageId>{cebcad87-16a0-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>cr1a3_datereceived,prioritycode</Attributes>
+          <EntityAlias>PreImage</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin: Update of incident" SdkMessageProcessingStepId="{8b1a33e7-ab96-f111-8076-6045bd0066ee}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>cb4005e7-549f-41ae-b7a3-400e4be15bf2</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin: Update of incident</Description>
+      <FilteringAttributes>cr1a3_repairstatus</FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PreImage">
+          <SdkMessageProcessingStepImageId>{ee03b15d-ae96-f111-8076-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>cr1a3_datereceived,cr1a3_estimatedcost,cr1a3_finalcost,cr1a3_repairstatus</Attributes>
+          <EntityAlias>PreImage</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin: Update of incident" SdkMessageProcessingStepId="{0a194ff1-799e-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>8a80b2fd-c56a-464f-bed3-ce67332252d4</PluginTypeId>
+      <PrimaryEntity>incident</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin: Update of incident</Description>
+      <FilteringAttributes>cr1a3_repairstatus</FilteringAttributes>
+      <InvocationSource>0</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>10</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>10</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="Pre Image">
+          <SdkMessageProcessingStepImageId>{f4834324-7a9e-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>cr1a3_repairstatus</Attributes>
+          <EntityAlias>PreImage</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin: Update of gsic_computerrepairprocess" SdkMessageProcessingStepId="{77f75aca-a29d-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>1e4d8337-4f20-4d85-b9de-75eceb3bef01</PluginTypeId>
+      <PrimaryEntity>gsic_computerrepairprocess</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin: Update of gsic_computerrepairprocess</Description>
+      <FilteringAttributes>activestageid</FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>40</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PostImage">
+          <SdkMessageProcessingStepImageId>{37b718dc-a39d-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>activestageid,bpf_incidentid</Attributes>
+          <EntityAlias>PostImage</EntityAlias>
+          <ImageType>1</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Create of gsic_repairpart" SdkMessageProcessingStepId="{87eec4b8-98a1-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>9ebdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>adaa612e-3bd8-49f7-9677-11d83478a1f5</PluginTypeId>
+      <PrimaryEntity>gsic_repairpart</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Create of gsic_repairpart</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages />
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Delete of gsic_repairpart" SdkMessageProcessingStepId="{001a9121-99a1-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>a1bdbb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>adaa612e-3bd8-49f7-9677-11d83478a1f5</PluginTypeId>
+      <PrimaryEntity>gsic_repairpart</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Delete of gsic_repairpart</Description>
+      <FilteringAttributes></FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PreImage">
+          <SdkMessageProcessingStepImageId>{4ecd0234-99a1-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>gsic_case,gsic_inventoryitem,gsic_quantity</Attributes>
+          <EntityAlias>PreImage</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+    <SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Update of gsic_repairpart" SdkMessageProcessingStepId="{9d68e8d7-98a1-f111-b8dc-6045bd0066ee}">
+      <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+      <PluginTypeName>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+      <PluginTypeId>adaa612e-3bd8-49f7-9677-11d83478a1f5</PluginTypeId>
+      <PrimaryEntity>gsic_repairpart</PrimaryEntity>
+      <AsyncAutoDelete>0</AsyncAutoDelete>
+      <Description>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Update of gsic_repairpart</Description>
+      <FilteringAttributes>gsic_inventoryitem,gsic_quantity</FilteringAttributes>
+      <InvocationSource>1</InvocationSource>
+      <Mode>0</Mode>
+      <Rank>1</Rank>
+      <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+      <Stage>20</Stage>
+      <IsCustomizable>1</IsCustomizable>
+      <IsHidden>0</IsHidden>
+      <SupportedDeployment>0</SupportedDeployment>
+      <IntroducedVersion>1.0</IntroducedVersion>
+      <SdkMessageProcessingStepImages>
+        <SdkMessageProcessingStepImage Name="PreImage">
+          <SdkMessageProcessingStepImageId>{cb596e02-99a1-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+          <Attributes>gsic_case,gsic_inventoryitem,gsic_quantity</Attributes>
+          <EntityAlias>PreImage</EntityAlias>
+          <ImageType>0</ImageType>
+          <MessagePropertyName>Target</MessagePropertyName>
+          <IsCustomizable>1</IsCustomizable>
+        </SdkMessageProcessingStepImage>
+      </SdkMessageProcessingStepImages>
+    </SdkMessageProcessingStep>
+  </SdkMessageProcessingSteps>
   <EntityDataProviders />
   <Languages>
     <Language>1033</Language>
