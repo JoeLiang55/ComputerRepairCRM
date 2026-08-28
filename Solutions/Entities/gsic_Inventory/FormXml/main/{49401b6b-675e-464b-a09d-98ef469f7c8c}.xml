@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{49401b6b-675e-464b-a09d-98ef469f7c8c}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form headerdensity="HighWithControls">
+      <tabs>
+        <tab verticallayout="true" id="{a26cadf8-1927-4ad3-9677-656caa778d3b}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{8234cb5d-434e-43a4-95c6-c16c8b956f89}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{6698980e-a5f5-485a-82cd-0ed887f22745}" visible="false">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_3" id="d840cd81-6e12-4dab-9790-68090451fd72" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Stock Management" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{3d1d7bb5-a89f-463f-bb3e-38823e6e7080}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c5dc10ae-2767-4789-9a13-4fa1b59fc531}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_4" id="9250ffbb-5d1f-480d-a606-1a825d5809d2" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Inventory Details" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{fbbcc7b6-52ec-48e8-a54e-b61ae4bd3193}" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Part Name" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_partname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="gsic_partname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{1f1de15b-0e8f-4cbe-8018-a61bee444b0a}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="SKU" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_sku" classid="{4273EDBD-AC1D-40D3-9FB2-095C621B552D}" datafieldname="gsic_sku" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{a5e6f881-8936-44ad-8f27-2176a6257ae4}" userspacer="true" showlabel="false" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+                <section name="null_section_5" id="0d26fc99-8055-42b6-a934-69e0db3c9260" IsUserDefined="0" locklevel="0" showlabel="true" showbar="false" layout="varwidth" celllabelalignment="Left" celllabelposition="Left" columns="1" labelwidth="115">
+                  <labels>
+                    <label description="Stock Management" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row />
+                    <row>
+                      <cell id="{445a4ebf-a0fe-4972-875f-cda01748496b}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Stock Quantity" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_stockquantity" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="gsic_stockquantity" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{4ebb5717-846a-4169-a1e4-b1260c572a12}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Reorder Level" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_reorderlevel" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="gsic_reorderlevel" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c5d58330-fb30-48f9-bf76-3c6df64d9ced}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Unit Cost" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_unitcost" classid="{533B9E00-756B-4312-95A0-DC888637AC78}" datafieldname="gsic_unitcost" disabled="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+      <header id="{17260dd9-5f29-4e9b-9e12-491163be3a09}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{f16a8d31-acc6-498a-9039-229cb7a47250}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{4bfdc2d9-fb23-409d-b293-746ba155bc35}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{05266f75-ec3d-44d7-bb64-a71f51bff106}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{83ec0650-8bc4-40fd-a82b-e104950ba084}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{908ad8b3-6a16-4a7f-89ed-d2fe4aa1fc5d}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{3abfd46e-4505-43ba-bb14-558bc41c25d0}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{5b593b77-6bb3-4767-b1b7-233d12548266}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

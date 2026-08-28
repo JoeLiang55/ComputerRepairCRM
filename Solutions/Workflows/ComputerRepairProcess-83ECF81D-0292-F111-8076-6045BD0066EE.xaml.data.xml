@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Workflow WorkflowId="{83ecf81d-0292-f111-8076-6045bd0066ee}" Name="Computer Repair Process" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <XamlFileName>/Workflows/ComputerRepairProcess-83ECF81D-0292-F111-8076-6045BD0066EE.xaml</XamlFileName>
+  <Type>1</Type>
+  <Subprocess>0</Subprocess>
+  <Category>4</Category>
+  <Mode>0</Mode>
+  <Scope>4</Scope>
+  <OnDemand>0</OnDemand>
+  <TriggerOnCreate>1</TriggerOnCreate>
+  <TriggerOnDelete>0</TriggerOnDelete>
+  <AsyncAutodelete>0</AsyncAutodelete>
+  <SyncWorkflowLogOnFailure>0</SyncWorkflowLogOnFailure>
+  <StateCode>1</StateCode>
+  <StatusCode>2</StatusCode>
+  <processorder>100</processorder>
+  <RunAs>1</RunAs>
+  <UniqueName>gsic_computerrepairprocess</UniqueName>
+  <IsTransacted>1</IsTransacted>
+  <IntroducedVersion>1.0.0.0</IntroducedVersion>
+  <IsCustomizable>1</IsCustomizable>
+  <BusinessProcessType>0</BusinessProcessType>
+  <IsCustomProcessingStepAllowedForOtherPublishers>1</IsCustomProcessingStepAllowedForOtherPublishers>
+  <ProcessTriggerScope>1</ProcessTriggerScope>
+  <ModernFlowType>0</ModernFlowType>
+  <PrimaryEntity>Incident</PrimaryEntity>
+  <LocalizedNames>
+    <LocalizedName languagecode="1033" description="Computer Repair Process" />
+  </LocalizedNames>
+  <labels>
+    <steplabels id="{8da6bb84-b292-4b0e-9604-b392c1e10d69}">
+      <label languagecode="1033" description="Received" />
+    </steplabels>
+    <steplabels id="{7f9f93a6-c902-4b25-a480-760811b1a5c4}">
+      <label languagecode="1033" description="Customer" />
+    </steplabels>
+    <steplabels id="{e2929f1d-2353-42ce-95e3-db3310f55d6c}">
+      <label languagecode="1033" description="Case Title" />
+    </steplabels>
+    <steplabels id="{88636c99-97f2-41ab-9f40-2ea57ebbcf0d}">
+      <label languagecode="1033" description="Brand" />
+    </steplabels>
+    <steplabels id="{d70dd7ae-7c81-4e3f-b5ff-a1031112b6d1}">
+      <label languagecode="1033" description="Model" />
+    </steplabels>
+    <steplabels id="{edd707e2-48b9-4525-b7cb-1bcdce7c680d}">
+      <label languagecode="1033" description="Serial Number" />
+    </steplabels>
+    <steplabels id="{38c75b49-9ffa-43de-ba17-ed38b08fa674}">
+      <label languagecode="1033" description="Reported Issue" />
+    </steplabels>
+    <steplabels id="{656e68e6-61fe-4fd6-bf4d-25e6f01dcc57}">
+      <label languagecode="1033" description="Date Received" />
+    </steplabels>
+    <steplabels id="{3cf2a50b-4a35-41d4-ac81-62b514e268e6}">
+      <label languagecode="1033" description="Diagnosing" />
+    </steplabels>
+    <steplabels id="{357fdcb4-5aa3-4d9b-a16b-ef8272a681b3}">
+      <label languagecode="1033" description="Diagnosis" />
+    </steplabels>
+    <steplabels id="{c1a5e0a8-b2a5-4f21-afb6-d6d1370c93b5}">
+      <label languagecode="1033" description="Estimated Cost" />
+    </steplabels>
+    <steplabels id="{0b42c8e7-7119-483a-b16e-a453a3d6c4ed}">
+      <label languagecode="1033" description="Waiting For Approval" />
+    </steplabels>
+    <steplabels id="{90664588-684d-40ad-986e-134a9534268b}">
+      <label languagecode="1033" description="Estimated Cost" />
+    </steplabels>
+    <steplabels id="{cb6f3ee9-2792-4166-bc0b-dac7c8dd708b}">
+      <label languagecode="1033" description="Received As" />
+    </steplabels>
+    <steplabels id="{6a68e4c7-ee22-4bdb-962a-76fb5ad7f01a}">
+      <label languagecode="1033" description="Repair In Progress" />
+    </steplabels>
+    <steplabels id="{1c3b5d78-961d-4e90-9895-3a7a26b57188}">
+      <label languagecode="1033" description="Diagnosis" />
+    </steplabels>
+    <steplabels id="{394bd7d4-2730-4d57-951d-5ef126aaaec9}">
+      <label languagecode="1033" description="Repair Status" />
+    </steplabels>
+    <steplabels id="{66c43c8c-1ed7-481a-af91-999103ffae49}">
+      <label languagecode="1033" description="New Stefp" />
+    </steplabels>
+    <steplabels id="{dd1193ec-deea-43dc-8d37-92513a8db307}">
+      <label languagecode="1033" description="Ready For Pickup" />
+    </steplabels>
+    <steplabels id="{d721ad28-1dc5-482c-8492-28beedb59387}">
+      <label languagecode="1033" description="Repair Status" />
+    </steplabels>
+    <steplabels id="{363ea4d9-df7f-411e-97b4-937763614161}">
+      <label languagecode="1033" description="Final Cost" />
+    </steplabels>
+    <steplabels id="{8ba57507-eb72-408d-9fab-f3ea266b6273}">
+      <label languagecode="1033" description="Completion Date" />
+    </steplabels>
+    <steplabels id="{18c88647-801a-406f-ad82-c8a0c6acfe41}">
+      <label languagecode="1033" description="Completed" />
+    </steplabels>
+    <steplabels id="{167512e1-fc97-49e5-8880-0b0993b71650}">
+      <label languagecode="1033" description="Repair Status" />
+    </steplabels>
+    <steplabels id="{5ab7f775-3ec2-4d87-9b86-fa9c9062a6fb}">
+      <label languagecode="1033" description="Final Cost" />
+    </steplabels>
+    <steplabels id="{8c0608b2-e52b-4d8b-a075-8050656f3fa6}">
+      <label languagecode="1033" description="Completion Date" />
+    </steplabels>
+  </labels>
+</Workflow>

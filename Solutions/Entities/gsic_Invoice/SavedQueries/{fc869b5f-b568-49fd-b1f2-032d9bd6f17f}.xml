@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{fc869b5f-b568-49fd-b1f2-032d9bd6f17f}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="gsic_invoice1" select="1" icon="1" preview="1">
+        <row name="result" id="gsic_invoiceid">
+          <cell name="gsic_invoice1" width="300" />
+          <cell name="gsic_invoicenumber" width="150" />
+          <cell name="gsic_caseid" width="150" />
+          <cell name="gsic_contactid" width="150" />
+          <cell name="gsic_subtotal" width="150" />
+          <cell name="gsic_taxamount" width="150" />
+          <cell name="gsic_totalamount" width="150" />
+          <cell name="gsic_invoicedate" width="150" />
+          <cell name="gsic_duedate" width="150" />
+          <cell name="gsic_invoicestatus" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="gsic_invoice">
+          <attribute name="gsic_invoiceid" />
+          <attribute name="gsic_invoice1" />
+          <attribute name="createdon" />
+          <order attribute="gsic_invoice1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="gsic_invoicenumber" />
+          <attribute name="gsic_caseid" />
+          <attribute name="gsic_contactid" />
+          <attribute name="gsic_subtotal" />
+          <attribute name="gsic_taxamount" />
+          <attribute name="gsic_totalamount" />
+          <attribute name="gsic_invoicedate" />
+          <attribute name="gsic_duedate" />
+          <attribute name="gsic_invoicestatus" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Invoices" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

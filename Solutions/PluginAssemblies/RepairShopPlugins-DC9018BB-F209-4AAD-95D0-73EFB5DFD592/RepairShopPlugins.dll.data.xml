@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PluginAssembly FullName="RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginAssemblyId="dc9018bb-f209-4aad-95d0-73efb5dfd592" CustomizationLevel="1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <IsolationMode>2</IsolationMode>
+  <SourceType>0</SourceType>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <FileName>/PluginAssemblies/RepairShopPlugins-DC9018BB-F209-4AAD-95D0-73EFB5DFD592/RepairShopPlugins.dll</FileName>
+  <PluginTypes>
+    <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="b3695662-b744-4898-8935-e91bb66588b2" Name="RepairShop.Plugins.Plugins.Incident.CalculateRepairDueDatePlugin">
+      <FriendlyName>8cdfeaf0-1cfc-4ad5-96ca-c4649039334f</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="cb4005e7-549f-41ae-b7a3-400e4be15bf2" Name="RepairShop.Plugins.Plugins.Incident.CompleteRepairOnStatusChangePlugin">
+      <FriendlyName>bb99518c-3546-4317-b6e6-1ef2c95e7fa6</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="8a80b2fd-c56a-464f-bed3-ce67332252d4" Name="RepairShop.Plugins.Plugins.Incident.PreventInvalidRepairStatusTransitionPlugin">
+      <FriendlyName>acb4a6de-e20b-4922-819c-1489c9aac159</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="1e4d8337-4f20-4d85-b9de-75eceb3bef01" Name="RepairShop.Plugins.Plugins.Incident.SyncRepairStatusFromBpfStagePlugin">
+      <FriendlyName>4a794437-b0bc-4db7-a6a7-9c071fb8aa13</FriendlyName>
+    </PluginType>
+    <PluginType AssemblyQualifiedName="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6" PluginTypeId="adaa612e-3bd8-49f7-9677-11d83478a1f5" Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin">
+      <FriendlyName>dff7a10d-c6fc-49f8-8bae-4f1157c778ca</FriendlyName>
+    </PluginType>
+  </PluginTypes>
+</PluginAssembly>

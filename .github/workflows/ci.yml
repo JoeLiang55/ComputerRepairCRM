@@ -12,12 +12,9 @@ permissions:
   contents: read
 
 jobs:
-  csharp:
-    name: C# plug-ins
+  build-solution:
+    name: Build deployable solution
     runs-on: windows-latest
-    defaults:
-      run:
-        working-directory: RepairShop.Plugins
 
     steps:
       - name: Check out repository
@@ -29,24 +26,16 @@ jobs:
           dotnet-version: 10.0.x
 
       - name: Restore
+        working-directory: RepairShop.Plugins
         run: dotnet restore RepairShop.Plugins.slnx
 
-      - name: Build
+      - name: Build C# plug-ins
+        working-directory: RepairShop.Plugins
         run: dotnet build RepairShop.Plugins.slnx --configuration Release --no-restore
 
-      - name: Test
+      - name: Test C# plug-ins
+        working-directory: RepairShop.Plugins
         run: dotnet test RepairShop.Plugins.slnx --configuration Release --no-build
-
-  pcf:
-    name: PCF control
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: pcf/RepairStatusControl
-
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v7
 
       - name: Set up Node.js
         uses: actions/setup-node@v7
@@ -56,13 +45,75 @@ jobs:
           cache-dependency-path: pcf/RepairStatusControl/package-lock.json
 
       - name: Install dependencies
+        working-directory: pcf/RepairStatusControl
         run: npm ci
 
-      - name: Lint
+      - name: Lint PCF control
+        working-directory: pcf/RepairStatusControl
         run: npm run lint
 
-      - name: Build
+      - name: Build PCF control
+        working-directory: pcf/RepairStatusControl
         run: npm run build
 
-      - name: Test
+      - name: Test PCF control
+        working-directory: pcf/RepairStatusControl
         run: npm test
+
+      - name: Install Power Platform tools
+        uses: microsoft/powerplatform-actions/actions-install@v1
+
+      - name: Prepare Dataverse solution
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force artifacts | Out-Null
+          dotnet restore CaseManagementPoC.cdsproj
+
+      - name: Insert CI-built plug-in assembly
+        shell: pwsh
+        run: |
+          ./scripts/Prepare-DataverseSolution.ps1 `
+            -PluginDll RepairShop.Plugins/RepairShop.Plugins/bin/Release/net462/RepairShop.Plugins.dll
+
+      - name: Validate Dataverse solution and assembly hash
+        shell: pwsh
+        run: |
+          ./scripts/Validate-DataverseSolution.ps1 `
+            -PluginDll RepairShop.Plugins/RepairShop.Plugins/bin/Release/net462/RepairShop.Plugins.dll
+
+      - name: Package unmanaged Dataverse solution with PCF
+        shell: pwsh
+        run: |
+          dotnet build CaseManagementPoC.cdsproj --configuration Release --no-restore
+          Copy-Item `
+            -LiteralPath bin/Release/CaseManagementPoC.zip `
+            -Destination artifacts/CaseManagementPoC.zip `
+            -Force
+
+      - name: Validate packaged PCF control and plug-in hash
+        shell: pwsh
+        run: |
+          ./scripts/Validate-SolutionPackage.ps1 `
+            -PackageZip artifacts/CaseManagementPoC.zip `
+            -PluginDll RepairShop.Plugins/RepairShop.Plugins/bin/Release/net462/RepairShop.Plugins.dll
+
+      - name: Validate packaged solution round trip
+        shell: pwsh
+        run: |
+          pac solution unpack `
+            --zipfile artifacts/CaseManagementPoC.zip `
+            --folder artifacts/validation `
+            --packagetype Unmanaged `
+            --allowWrite `
+            --clobber `
+            --errorlevel Warning
+          ./scripts/Validate-DataverseSolution.ps1 `
+            -SolutionRoot artifacts/validation `
+            -PluginDll RepairShop.Plugins/RepairShop.Plugins/bin/Release/net462/RepairShop.Plugins.dll
+
+      - name: Publish unmanaged solution artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: CaseManagementPoC-unmanaged
+          path: artifacts/CaseManagementPoC.zip
+          if-no-files-found: error
