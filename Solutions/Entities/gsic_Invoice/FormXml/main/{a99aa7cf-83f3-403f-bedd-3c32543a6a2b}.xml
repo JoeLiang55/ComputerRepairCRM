@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{a99aa7cf-83f3-403f-bedd-3c32543a6a2b}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{48130DDA-0604-4EAB-B91E-3E918A5FC329}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{3482CE8F-5D1E-48DA-B8EE-78A5494F9B9B}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{770D2AB7-DB23-4DC7-B2C9-B31A3D08FAFE}">
+                        <labels>
+                          <label description="" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_invoice1" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="gsic_Invoice1" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{D4B1C8AB-FBCA-4970-B15D-3168A4535E38}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c66ba32e-dcb7-4cad-8fb8-c3d71423eb36}">
+                        <labels>
+                          <label description="Invoice Number" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_invoicenumber" classid="{c6d124ca-7eda-4a60-aea9-7fb8d318b68f}" datafieldname="gsic_invoicenumber" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{6a1b7fb1-e8a8-479c-a9ef-2b2f025c8c1b}">
+                        <labels>
+                          <label description="Case" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_caseid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="gsic_caseid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e92ca26d-7053-42e5-8a44-d97a2413625b}">
+                        <labels>
+                          <label description="Contact" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_contactid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="gsic_contactid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{283f679b-4fc1-4411-8756-b93a276057a5}">
+                        <labels>
+                          <label description="Subtotal" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_subtotal" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="gsic_subtotal" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cd9d2223-3b6f-40c8-948e-f9bf8376d21b}">
+                        <labels>
+                          <label description="Tax Amount" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_taxamount" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="gsic_taxamount" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{adac3cd9-68fd-4af3-8281-3bd3a07efd0c}">
+                        <labels>
+                          <label description="Total Amount" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_totalamount" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="gsic_totalamount" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{11dc0a9d-5cd2-4c55-a918-fea9a89ab3a9}">
+                        <labels>
+                          <label description="Invoice Date" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_invoicedate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="gsic_invoicedate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{ae0dbd2f-7528-446c-aa16-4b415512ccd7}">
+                        <labels>
+                          <label description="Due Date" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_duedate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="gsic_duedate" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{df292b56-fdb5-48ec-a8e5-f3dd3261dc5e}">
+                        <labels>
+                          <label description="Invoice Status" languagecode="1033" />
+                        </labels>
+                        <control id="gsic_invoicestatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="gsic_invoicestatus" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

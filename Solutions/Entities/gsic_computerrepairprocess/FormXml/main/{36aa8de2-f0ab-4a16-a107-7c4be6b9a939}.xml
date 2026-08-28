@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{36aa8de2-f0ab-4a16-a107-7c4be6b9a939}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{8da6bb84-b292-4b0e-9604-b392c1e10d69}" name="StageStep3" locklevel="0" expanded="true" visible="false" labelid="{f848c475-9638-445e-b994-51589798d6e3}">
+          <labels>
+            <label description="Received" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{6b09a4a2-be17-c0d5-488f-da14d42ab1f8}" name="StageStep3_section1" labelid="{fca94e6e-e22e-4250-a645-554a679ebcd2}">
+                  <labels>
+                    <label description="Received" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{7f9f93a6-c902-4b25-a480-760811b1a5c4}" showlabel="true" visible="true" labelid="{2a9aad0d-524e-4c02-aecd-4c19c8d0219a}">
+                        <labels>
+                          <label description="Customer" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:customerid" classid="{270bd3db-d9af-4782-9025-509e298dec0a}" datafieldname="customerid" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{e2929f1d-2353-42ce-95e3-db3310f55d6c}" showlabel="true" visible="true" labelid="{086b52f7-cf9c-477f-908a-f3110937a5d0}">
+                        <labels>
+                          <label description="Case Title" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:title" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="title" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{88636c99-97f2-41ab-9f40-2ea57ebbcf0d}" showlabel="true" visible="true" labelid="{e324f581-0430-42a9-a419-aed5eb1f6d14}">
+                        <labels>
+                          <label description="Brand" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_brand" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_brand" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{d70dd7ae-7c81-4e3f-b5ff-a1031112b6d1}" showlabel="true" visible="true" labelid="{ad819afd-388b-4bfb-b25b-e455d1bed67c}">
+                        <labels>
+                          <label description="Model" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_model" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_model" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{edd707e2-48b9-4525-b7cb-1bcdce7c680d}" showlabel="true" visible="true" labelid="{3350740d-de9b-4159-9b65-a44401db4b65}">
+                        <labels>
+                          <label description="Serial Number" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_serialnumber" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_serialnumber" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{38c75b49-9ffa-43de-ba17-ed38b08fa674}" showlabel="true" visible="true" labelid="{9ee5517b-eab3-437d-8975-28680ef27590}">
+                        <labels>
+                          <label description="Reported Issue" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_reportedissue" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_reportedissue" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{656e68e6-61fe-4fd6-bf4d-25e6f01dcc57}" showlabel="true" visible="true" labelid="{b45fc0fe-4501-43a0-b6e9-6996d2a65fb8}">
+                        <labels>
+                          <label description="Date Received" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_datereceived" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="cr1a3_datereceived" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{3cf2a50b-4a35-41d4-ac81-62b514e268e6}" name="StageStep19" locklevel="0" expanded="true" visible="false" labelid="{d101551b-15c0-46a8-a49f-cb5d002b93a0}">
+          <labels>
+            <label description="Diagnosing" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{58257eee-d17b-7b8d-694d-7fd772054e2c}" name="StageStep19_section1" labelid="{079a8a98-22bc-40ff-9c88-d3118c3d86bb}">
+                  <labels>
+                    <label description="Diagnosing" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{357fdcb4-5aa3-4d9b-a16b-ef8272a681b3}" showlabel="true" visible="true" labelid="{8a7044fb-0799-410f-b807-1e07144050fa}">
+                        <labels>
+                          <label description="Diagnosis" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_diagnosis" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_diagnosis" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c1a5e0a8-b2a5-4f21-afb6-d6d1370c93b5}" showlabel="true" visible="true" labelid="{712f4c38-7864-41db-9f61-0129eb0a1850}">
+                        <labels>
+                          <label description="Estimated Cost" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_estimatedcost" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="cr1a3_estimatedcost" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{0b42c8e7-7119-483a-b16e-a453a3d6c4ed}" name="StageStep25" locklevel="0" expanded="true" visible="false" labelid="{ab841967-ec46-4169-8f23-a7de935d4a13}">
+          <labels>
+            <label description="Waiting For Approval" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{19912021-63a3-9dee-952d-aa54a86100c2}" name="StageStep25_section1" labelid="{8fd9d881-20ab-47ab-a3b1-ecc37eb32ffb}">
+                  <labels>
+                    <label description="Waiting For Approval" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{90664588-684d-40ad-986e-134a9534268b}" showlabel="true" visible="true" labelid="{7f30ad1c-43db-4f5c-9bc4-423126344bd0}">
+                        <labels>
+                          <label description="Estimated Cost" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_estimatedcost" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="cr1a3_estimatedcost" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{cb6f3ee9-2792-4166-bc0b-dac7c8dd708b}" showlabel="true" visible="true" labelid="{342293ee-e33e-49c7-a35b-6e6265ff3212}">
+                        <labels>
+                          <label description="Received As" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_repairstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cr1a3_repairstatus" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{6a68e4c7-ee22-4bdb-962a-76fb5ad7f01a}" name="StageStep31" locklevel="0" expanded="true" visible="false" labelid="{489d925c-24fd-48ea-bd77-22caa66b1b8a}">
+          <labels>
+            <label description="Repair In Progress" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{7c34814a-c6e3-b6f5-d237-69f9349f003f}" name="StageStep31_section1" labelid="{6d94003f-de65-4ccc-a2e0-882ea4056e1c}">
+                  <labels>
+                    <label description="Repair In Progress" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{1c3b5d78-961d-4e90-9895-3a7a26b57188}" showlabel="true" visible="true" labelid="{20b704b4-7e1c-4b6c-87d1-3d10395ce2d8}">
+                        <labels>
+                          <label description="Diagnosis" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_diagnosis" classid="{4273edbd-ac1d-40d3-9fb2-095c621b552d}" datafieldname="cr1a3_diagnosis" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{394bd7d4-2730-4d57-951d-5ef126aaaec9}" showlabel="true" visible="true" labelid="{a0674889-8b0a-41eb-a80f-b7ec05ccc082}">
+                        <labels>
+                          <label description="Repair Status" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_repairstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cr1a3_repairstatus" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{66c43c8c-1ed7-481a-af91-999103ffae49}" showlabel="true" visible="true" labelid="{b7266775-f653-4cb7-b228-094ba5dc3e0c}">
+                        <labels>
+                          <label description="New Stefp" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_finalcost" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="cr1a3_finalcost" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{dd1193ec-deea-43dc-8d37-92513a8db307}" name="StageStep39" locklevel="0" expanded="true" visible="false" labelid="{97b6f419-0d7a-43cf-86ef-aee8ba60b144}">
+          <labels>
+            <label description="Ready For Pickup" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{745a3c29-f4b2-fad4-7324-b981271b5ba2}" name="StageStep39_section1" labelid="{159379b4-66c1-45a5-888e-61b375b3f921}">
+                  <labels>
+                    <label description="Ready For Pickup" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{d721ad28-1dc5-482c-8492-28beedb59387}" showlabel="true" visible="true" labelid="{2163004c-b7e6-4379-986a-fad721890764}">
+                        <labels>
+                          <label description="Repair Status" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_repairstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cr1a3_repairstatus" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{363ea4d9-df7f-411e-97b4-937763614161}" showlabel="true" visible="true" labelid="{014e72f9-2ed4-4f1d-98a8-a33bb257496b}">
+                        <labels>
+                          <label description="Final Cost" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_finalcost" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="cr1a3_finalcost" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8ba57507-eb72-408d-9fab-f3ea266b6273}" showlabel="true" visible="true" labelid="{6a28a9cd-800f-4c1c-9d57-78d664c19374}">
+                        <labels>
+                          <label description="Completion Date" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:gsic_completiondate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="gsic_completiondate" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+        <tab verticallayout="true" id="{18c88647-801a-406f-ad82-c8a0c6acfe41}" name="StageStep47" locklevel="0" expanded="true" visible="false" labelid="{eac77eb2-898e-4541-bdca-a92386118884}">
+          <labels>
+            <label description="Completed" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showbar="false" columns="1" id="{330c9512-a080-8829-3587-52cbf7569ff9}" name="StageStep47_section1" labelid="{d95280a0-1197-4f31-98b8-57b9e07479bb}">
+                  <labels>
+                    <label description="Completed" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{167512e1-fc97-49e5-8880-0b0993b71650}" showlabel="true" visible="true" labelid="{79eed420-4598-4b2a-a2a1-20d1d348e54b}">
+                        <labels>
+                          <label description="Repair Status" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_repairstatus" classid="{3ef39988-22bb-4f0b-bbbe-64b5a3748aee}" datafieldname="cr1a3_repairstatus" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="true" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{5ab7f775-3ec2-4d87-9b86-fa9c9062a6fb}" showlabel="true" visible="true" labelid="{4420a6ca-fd8c-4831-a1e7-bc68eb8a03c4}">
+                        <labels>
+                          <label description="Final Cost" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:cr1a3_finalcost" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="cr1a3_finalcost" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{8c0608b2-e52b-4d8b-a075-8050656f3fa6}" showlabel="true" visible="true" labelid="{8c554900-1504-4c62-87c3-d4c1e8052898}">
+                        <labels>
+                          <label description="Completion Date" languagecode="1033" />
+                        </labels>
+                        <control id="bpf_incident_gsic_computerrepairprocess:gsic_completiondate" classid="{5b773807-9fb2-42db-97c3-7a91eff8adff}" datafieldname="gsic_completiondate" disabled="false" relationship="bpf_incident_gsic_computerrepairprocess" isrequired="false" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

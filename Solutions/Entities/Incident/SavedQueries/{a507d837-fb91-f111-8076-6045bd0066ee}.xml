@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{a507d837-fb91-f111-8076-6045bd0066ee}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="title" select="1" icon="1" preview="1">
+        <row name="result" id="incidentid">
+          <cell name="ticketnumber" width="200" />
+          <cell name="title" width="100" />
+          <cell name="customerid" width="100" />
+          <cell name="cr1a3_brand" width="100" />
+          <cell name="cr1a3_diagnosis" width="200" />
+          <cell name="cr1a3_finalcost" width="200" />
+          <cell name="gsic_completiondate" width="200" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" output-format="xml-platform" mapping="logical">
+        <entity name="incident">&lt;attribute name="ticketnumber" /&gt;&lt;attribute name="cr1a3_repairstatus" /&gt;&lt;attribute name="cr1a3_finalcost" /&gt;&lt;attribute name="gsic_completiondate" /&gt;&lt;attribute name="cr1a3_diagnosis" /&gt;<attribute name="ticketnumber" /><attribute name="cr1a3_finalcost" /><attribute name="gsic_completiondate" /><attribute name="cr1a3_diagnosis" /><attribute name="incidentid" /><attribute name="title" /><attribute name="customerid" /><attribute name="cr1a3_brand" /></entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0.0.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Completed Repairs" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

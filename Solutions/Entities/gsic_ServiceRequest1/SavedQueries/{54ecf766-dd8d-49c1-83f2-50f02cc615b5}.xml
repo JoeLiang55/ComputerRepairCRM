@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>1</isdefault>
+    <savedqueryid>{54ecf766-dd8d-49c1-83f2-50f02cc615b5}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="gsic_servicedescription" select="1" icon="1" preview="1">
+        <row name="result" id="gsic_servicerequest1id">
+          <cell name="gsic_servicedescription" width="300" />
+          <cell name="gsic_caseid" width="150" />
+          <cell name="gsic_invoiceid" width="150" />
+          <cell name="gsic_serviceamount" width="150" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="gsic_servicerequest1">
+          <attribute name="gsic_servicerequest1id" />
+          <attribute name="gsic_servicedescription" />
+          <attribute name="createdon" />
+          <order attribute="gsic_servicedescription" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="0" />
+          </filter>
+          <attribute name="gsic_caseid" />
+          <attribute name="gsic_invoiceid" />
+          <attribute name="gsic_serviceamount" />
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Active Service Requests" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

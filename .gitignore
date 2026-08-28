@@ -18,6 +18,8 @@
 
 # Generated Power Platform packages
 *.zip
+artifacts/
+.tmp/
 
 # Local authentication and environment-specific secrets
 .env
@@ -27,6 +29,7 @@ authProfiles.json
 appsettings.Local.json
 *.publishsettings
 secrets.json
+local.settings.json
 
 # Common local files
 .DS_Store

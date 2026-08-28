@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<savedqueries xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <savedquery>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>0</CanBeDeleted>
+    <isquickfindquery>0</isquickfindquery>
+    <isprivate>0</isprivate>
+    <isdefault>0</isdefault>
+    <savedqueryid>{f47f2e20-e033-4f8f-8510-28416560065e}</savedqueryid>
+    <layoutxml>
+      <grid name="resultset" jump="gsic_payment1" select="1" icon="1" preview="1">
+        <row name="result" id="gsic_paymentid">
+          <cell name="gsic_payment1" width="300" />
+          <cell name="createdon" width="125" />
+        </row>
+      </grid>
+    </layoutxml>
+    <querytype>0</querytype>
+    <fetchxml>
+      <fetch version="1.0" mapping="logical">
+        <entity name="gsic_payment">
+          <attribute name="gsic_paymentid" />
+          <attribute name="gsic_payment1" />
+          <attribute name="createdon" />
+          <order attribute="gsic_payment1" descending="false" />
+          <filter type="and">
+            <condition attribute="statecode" operator="eq" value="1" />
+          </filter>
+        </entity>
+      </fetch>
+    </fetchxml>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <LocalizedNames>
+      <LocalizedName description="Inactive Payments" languagecode="1033" />
+    </LocalizedNames>
+  </savedquery>
+</savedqueries>

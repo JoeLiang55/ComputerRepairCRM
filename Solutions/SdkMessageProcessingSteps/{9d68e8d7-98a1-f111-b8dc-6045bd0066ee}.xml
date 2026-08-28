@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SdkMessageProcessingStep Name="RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Update of gsic_repairpart" SdkMessageProcessingStepId="{9d68e8d7-98a1-f111-b8dc-6045bd0066ee}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SdkMessageId>20bebb1b-ea3e-db11-86a7-000a3a5473e8</SdkMessageId>
+  <PluginTypeName>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin, RepairShop.Plugins, Version=1.0.0.0, Culture=neutral, PublicKeyToken=feb041d58a7327b6</PluginTypeName>
+  <PluginTypeId>adaa612e-3bd8-49f7-9677-11d83478a1f5</PluginTypeId>
+  <PrimaryEntity>gsic_repairpart</PrimaryEntity>
+  <AsyncAutoDelete>0</AsyncAutoDelete>
+  <Description>RepairShop.Plugins.Plugins.RepairPart.MaintainInventoryForRepairPartPlugin: Update of gsic_repairpart</Description>
+  <FilteringAttributes>gsic_inventoryitem,gsic_quantity</FilteringAttributes>
+  <InvocationSource>1</InvocationSource>
+  <Mode>0</Mode>
+  <Rank>1</Rank>
+  <EventHandlerTypeCode>4602</EventHandlerTypeCode>
+  <Stage>20</Stage>
+  <IsCustomizable>1</IsCustomizable>
+  <IsHidden>0</IsHidden>
+  <SupportedDeployment>0</SupportedDeployment>
+  <IntroducedVersion>1.0</IntroducedVersion>
+  <SdkMessageProcessingStepImages>
+    <SdkMessageProcessingStepImage Name="PreImage">
+      <SdkMessageProcessingStepImageId>{cb596e02-99a1-f111-b8dc-6045bd0066ee}</SdkMessageProcessingStepImageId>
+      <Attributes>gsic_case,gsic_inventoryitem,gsic_quantity</Attributes>
+      <EntityAlias>PreImage</EntityAlias>
+      <ImageType>0</ImageType>
+      <MessagePropertyName>Target</MessagePropertyName>
+      <IsCustomizable>1</IsCustomizable>
+    </SdkMessageProcessingStepImage>
+  </SdkMessageProcessingStepImages>
+</SdkMessageProcessingStep>
