@@ -71,7 +71,7 @@ jobs:
           $pacCommand = Get-Command pac -CommandType Application -ErrorAction Stop
           $pacPath = $pacCommand.Source
           Write-Host "Resolved PAC executable: $pacPath"
-          & $pacPath --version
+          & $pacPath help
 
       - name: Prepare Dataverse solution
         shell: pwsh
