@@ -62,14 +62,16 @@ jobs:
 
       - name: Install Power Platform tools
         uses: microsoft/powerplatform-actions/actions-install@v1
+        with:
+          add-tools-to-path: true
 
-      - name: Add PAC CLI to PATH and verify
+      - name: Resolve and verify PAC CLI
         shell: pwsh
         run: |
-          $pacToolsPath = Join-Path $env:USERPROFILE '.dotnet\tools'
-          $pacToolsPath | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          $env:PATH = "$pacToolsPath;$env:PATH"
-          pac --version
+          $pacCommand = Get-Command pac -CommandType Application -ErrorAction Stop
+          $pacPath = $pacCommand.Source
+          Write-Host "Resolved PAC executable: $pacPath"
+          & $pacPath --version
 
       - name: Prepare Dataverse solution
         shell: pwsh
